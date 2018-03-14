@@ -1,0 +1,304 @@
+@font-face {
+    font-family: "Striped";
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/KGSummerSunshine.ttf');
+}
+
+/*SECTION BANNER*/
+#sectionBanner{
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    background-image: url(../images/about_bg.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+}
+
+#sectionBanner .section-wrapper{
+    height: 100vh;
+    max-height: 650px;
+}
+
+#sectionBanner:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.75);
+}
+
+#bannerText{
+    width: 100%;
+    z-index: 1;
+    padding-bottom: 4.5em;
+}
+
+#sectionBanner h5{
+    font-family: SemiBold, sans-serif;
+    display: inline-block;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.1em;
+    border-bottom: 4px solid var(--theme-color);
+}
+
+#sectionBanner p{
+    font-size: 0.9em;
+    line-height: 1.3em;
+    max-width: 600px;
+}
+
+.stat span{
+    display: block;
+    text-align: right;
+}
+
+.stat span.number{
+    font-family: Bold, sans-serif;
+    font-size: 2.4em;
+}
+
+.stat span:not(.number){
+    margin-top: -0.1em;
+    font-size: 0.8em;
+    font-family: SemiBold, sans-serif;
+}
+
+#sectionGap{
+    background: #f7f7f7;
+    padding: 6em 0;
+}
+
+#sectionGap .section-wrapper{
+
+}
+
+#sectionGap img{
+    width: 40%;
+    height: auto;
+}
+
+#sectionGap h5{
+    line-height: 1.4em;
+    font-size: 2.8em;
+    margin-left: -32px;
+    margin-bottom: 50px;
+    font-family: "Striped", cuursive, serif;
+    color: var(--theme-color);
+    text-align: center;
+    white-space: nowrap;
+}
+
+#sectionGap h5:after {
+    content: "";
+    width: 40%;
+    height: 1px;
+    position: absolute;
+    bottom: -25px;
+    right: -10px;
+    left: 0;
+    margin: auto;
+    background: #333;
+}
+
+#sectionGap p {
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center !important;
+    max-width: 600px;
+}
+
+
+#sectionPrograms{
+    width: 100%;
+    background: #fff;
+    padding: 50px 5%;
+    padding-top: 4em;
+    display: table;
+    height: auto;
+}
+
+.time-line{
+    height: 45px;
+    width: 80%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin: 50px auto 10px;
+}
+
+.time-line .month{
+    color: #000;
+    opacity: 0.4;
+    transition: all 0.5s ease-out;
+}
+
+.time-line .month.active{
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url('../images/stripes.png');
+    opacity: 0.6;
+}
+
+.month.hovered{
+    background-color: #C00042;
+    color: #fff;
+    opacity: 1;
+}
+
+.time-line .month:not(:last-child){
+    border-right: 1px solid #555;
+
+}
+
+#sectionPrograms > h1{
+    font-family: SemiBold, sans-serif;
+    font-size: 2em;
+    color: #C00042;
+    text-align: center;
+
+}
+.programs{
+    width: 100%;
+    height: auto;
+    display: table;
+    margin: 2em auto;
+}
+.programs > div{
+    width: 33.33333%;
+    height: auto;
+    display: table;
+    float: left;
+    padding:25px;
+    transition: all 0.35s ease-out;
+}
+
+.programs >div:hover{
+    background: rgba(0,0,0,0.05);
+}
+
+.programs >div h1{
+    font-size:1.1em;
+    line-height: 1.3em;
+    font-family: SemiBold, sans-serif;
+    color: #C00042;
+
+
+}
+.programs > div p{
+    font-size: 0.7em;
+    line-height: 1.5em;
+    margin-top: 5px;
+}
+
+.programs > div p a{
+    font-family: SemiBold, sans-serif;
+    color: #C00042;
+    line-height: 2;
+    display: block;
+    margin-top: 2px;
+    letter-spacing: 1px;
+}
+
+#sectionAlumni{
+    padding: 0 9em;
+    margin-top: -1.2em;
+    margin-bottom: 4.8em;
+}
+
+#sectionAlumni h1{
+    margin-bottom: 1.1em;
+}
+
+#sectionAlumni .movers{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2.5em;
+    text-align: center;
+    margin: auto;
+}
+
+.movers button{
+    border-color: #555;
+}
+
+.movers button.active{
+    background-color: #555;
+}
+
+.alumni{
+    padding: 2.5em 2.5em;
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 2em;
+    border-radius: 0.7em;
+    background-color: #f4839d;
+    position: relative;
+}
+
+.alumni:befores{
+    content: 'Our Alumni';
+    position: absolute;
+    top: 0.1em;
+    letter-spacing: 2px;
+    left: 0;
+    right: 0.3em;
+    margin: auto;
+    text-align: center;
+    color: #ffc8d2;
+    font-family: Bold, sans-serif;
+    font-size: 5.4em;
+    opacity: 0.15;
+}
+
+.alumni .text{
+    max-width: 560px;
+}
+
+.alumni h3{
+    display: inline-block;
+    font-family: Regular, sans-serif;
+    font-size: 1.2em;
+    padding: 0.8em 0;
+    padding-right: 1em;
+    margin-bottom: 1.3em;
+    border-bottom: 3px solid #000;
+}
+
+.alumni .dp{
+    min-width: 250px;
+    width: 250px;
+    height: 250px;
+    border: 0.87em solid #ffc8d2;
+    border-radius: 50%;
+    margin-left: 2.5em;
+}
+
+.alumni span{
+    display: inline-block;
+    font-size: 0.8em;
+    font-family: Bold, sans-serif;
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+}
+
+#ctaJoin{
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url(../images/rhoda.jpg);
+}
+
+#ctaJoin:after{
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#ctaJoin h5{
+    margin-bottom: 0.7em;
+}

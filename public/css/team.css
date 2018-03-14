@@ -1,0 +1,291 @@
+/*SECTION BANNER*/
+#sectionBanner{
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    background-image: url(../images/team_banner.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+}
+
+#sectionBanner .section-wrapper{
+    height: 100vh;
+    max-height: 650px;
+}
+
+#sectionBanner:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.75);
+}
+
+#bannerText{
+    width: 100%;
+    z-index: 1;
+    padding-bottom: 4.5em;
+}
+
+#sectionBanner h5{
+    font-family: SemiBold, sans-serif;
+    display: inline-block;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.1em;
+    border-bottom: 4px solid var(--theme-color);
+}
+
+#sectionBanner p{
+    font-size: 0.9em;
+    line-height: 1.3em;
+    max-width: 600px;
+}
+
+#ctaJoin{
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url(../images/rhoda.jpg);
+}
+
+#ctaJoin:after{
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#ctaJoin h5{
+    margin-bottom: 0.7em;
+}
+
+
+#teamPage{
+    padding-bottom: 1em;
+}
+
+#teamPage p{
+    text-align: left;
+}
+
+#teamPage section{
+    margin-top: 20px;
+}
+
+section h2{
+    display: inline-block;
+    font-family: "Roboto bold", sans-serif;
+    font-size: 2em;
+    border-bottom: 4px solid crimson;
+    padding-right: 10px;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+}
+
+#teamBanner{
+    position: relative;
+    box-sizing: content-box;
+    padding-top: 200px;
+    background: #f0f0f0;
+    color: #eee;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+
+#teamBanner img,
+#teamBanner .scrim{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+#teamBanner .scrim{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+#teamBanner h2{
+    font-family: "Roboto Black", sans-serif;
+    font-size: 3em;
+}
+
+#teamBanner p{
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+#founder{
+    padding-top: 90px !important;
+    padding-bottom: 30px;
+}
+
+#founder .image{
+    min-height: 350px;
+    width: 300px;
+    min-width: 300px;
+    margin-right: 50px;
+    align-self: flex-start;
+    overflow: hidden;
+}
+
+#founder .image img{
+    width: 200%;
+    background: #ddd;
+}
+
+
+#founder h3{
+    font-size: 1.45em;
+    margin-bottom: 20px;
+}
+
+#founder p{
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+#founder p span:last-child{
+    display: none;
+}
+
+#founder p a{
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+#moreAboutFounder{
+    margin-top: 5px;
+    display: inline-block;
+    color: crimson;
+    text-decoration: underline;
+    text-decoration-color: crimson;
+}
+
+section .list{
+    margin-top: 20px;
+}
+
+section .item{
+    width: 33.333%;
+    padding-right: 26px;
+    margin-bottom: 30px;
+}
+
+section .item img{
+    width: 100%;
+    min-height: 204px;;
+    background: #ddd;
+}
+
+section .item .image{
+    max-height: 204px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+section .item .name{
+    font-family: "Roboto Regular", sans-serif;
+    font-size: 1.1em;
+}
+
+section .item .desc{
+    margin-top: 0;
+    font-family: "Roboto Regular", sans-serif;
+    font-size: 0.7em;
+}
+
+
+@media  all and (max-width: 450px){
+    #teamPage section{
+        padding: 25px 20px;
+        margin-top: 0;
+        margin-bottom:0;
+    }
+
+    #teamBanner{
+        padding-top: 160px;
+    }
+
+    #teamBanner img{
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: auto;
+    }
+
+    #founder{
+        flex-direction: column;
+        margin-bottom: 30px !important;
+    }
+
+    #founder .image{
+        height: 90px;
+        margin-bottom: 50px;
+    }
+
+    #founder h3{
+        font-size: 1.6em;
+    }
+
+    #founder p{
+        font-size: 1.4em;
+    }
+
+    #founder p span:last-child{
+        display: inline-block;
+    }
+
+    #founder p span:last-child a:after{
+        content: "more";
+    }
+
+    #founder p.full span:last-child a:after{
+        content: "less";
+    }
+
+    #founder p:not(.full) span:first-child{
+        display: none;
+    }
+
+    #moreAboutFounder{
+        margin-top: 22px;
+        font-size: 1.2em;
+    }
+
+    section .item{
+        width: 50%;
+        padding-right: 0;
+    }
+
+    section .item:nth-child(odd){
+        padding-right: 6px;
+    }
+
+    section .item:nth-child(even){
+        padding-left: 6px;
+    }
+
+    section .item img{
+        min-height: 120px;
+    }
+
+    section .item .image{
+        max-height:120px;
+    }
+
+    section .item .name{
+        font-size: 1.3em;
+    }
+
+    section .item .desc{
+        font-size: 1em;
+        color: #555;
+    }
+}
