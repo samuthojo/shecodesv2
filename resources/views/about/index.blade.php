@@ -1,3 +1,7 @@
+@php
+    $page = "about";
+@endphp
+
 @extends('layouts.app')
 
 @section('title')

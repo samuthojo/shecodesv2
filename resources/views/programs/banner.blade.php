@@ -3,7 +3,7 @@
         <div id="bannerText" class="layout end justified">
             <div>
                 <h5>GIRLS IN ICT PROGRAM</h5>
-                <p>
+                <p class="for-lg">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Adipisci delectus earum eligendi fugiat ipsum.
                     Eius impedit labore mollitia rem veniam.
@@ -15,7 +15,10 @@
                     Amet, laudantium vero. Alias aliquid et impedit inventore ipsum molestiae tempora?
                     Consequuntur eum ipsa numquam quo quod, temporibus! Dolor
                 </p>
-                <button class="btn">Watch Video</button>
+                <p class="for-mob">
+                    This course was created with the sole purpose of getting girls up and running with ICT oriented skillsets. Carefully designed materials spanned out across six, thirty hour weeks, will help the attendees familiarized with the basics of ICT.
+                </p>
+                <a href="https://www.youtube.com/watch?v=4Wlz5qZa9-M" target="_blank" class="btn">Watch Video</a>
                 <a href="{{url('/')}}" class="btn">Join the program</a>
             </div>
         </div>

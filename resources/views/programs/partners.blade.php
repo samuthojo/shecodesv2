@@ -3,7 +3,7 @@
         <h3>
             Program Partners
         </h3>
-        <div id="thePartners" class="layout inline justified">
+        <div id="thePartners" class="layout inline justified wrap">
             <a><img class="partner-image"  src="{{asset('images/buni.png')}}" width="90"></a>
             <a><img class="partner-image"  src="{{asset('images/redcross.jpg')}}" width="100"></a>
             <a><img class="partner-image"  src="{{asset('images/wolrdbank.png')}}" width="100"></a>

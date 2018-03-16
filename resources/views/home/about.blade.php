@@ -7,17 +7,17 @@
                 their creative abilities using TECH.
             </p>
 
-            <a href="#" class="layout center">
+            <a href="{{url('/about')}}" class="layout center">
                 <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0h24v24H0z" fill="none"/>
                     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
                 </svg>
 
-                Learn more about us
+                Learn more <span class="for-lg">about us</span>
             </a>
         </div>
 
-        <div id="aboutSections" class="layout">
+        <div id="aboutSections" class="layout wrap">
             <div class="about-section">
                 <h3>APP Development</h3>
                 <p>

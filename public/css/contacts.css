@@ -1,3 +1,13 @@
+#mainNav nav a.active {
+    border-bottom: 1px solid var(--theme-color-dark);
+}
+#mainNav nav a {
+    font-size: 0.8em;
+    padding: 0.6em 0.5em;
+    margin-right: 1em;
+    color: #000;
+}
+
 main {
      min-height: 0;
 }

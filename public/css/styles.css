@@ -137,7 +137,8 @@ button:not(.unstyled){
     margin-right: -0.2em;
 }
 
-#mainNav #socials a{
+#mainNav #socials a,
+footer #socials a{
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -148,6 +149,101 @@ button:not(.unstyled){
     background: #fff;
     color: #000;
     margin-right: 0.2em;
+}
+
+/*MOBILE NAVIGATION*/
+#mobNavigation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 9;
+    pointer-events: none;
+}
+
+.toggle, [id^=drop] {
+    display: none;
+}
+
+#mobNavigation.open{
+    pointer-events: auto;
+}
+
+#mobNavBg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,1);
+}
+
+#mobNavigation:not(.open) #mobNavBg{
+    opacity: 0 !important;
+    transform: none !important;
+}
+
+#mobNavigation:not(.open) #mobNavBg{
+    opacity: 0 !important;
+}
+
+#mobNavLogo{
+    background: #fff;
+    height: 74px;
+    padding: 10px 20px;
+    color: #000;
+    pointer-events: auto;
+}
+
+#mobNavLogo img{
+    height: 50px;
+}
+
+#mobNavLogo .fa{
+    font-size: 30px;
+}
+
+#mobNavLinks{
+    align-self: flex-start;
+    max-width: 350px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#mobNavLinks a, #mobNavLinks label{
+    display: block;
+    color: #fff;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.a-dropdown input{
+    display: none;
+}
+
+.a-dropdown-content{
+    padding: 10px 24px;
+}
+
+.a-dropdown-content a{
+    font-size: 18px !important;
+    color: #ccc !important;
+}
+
+.a-dropdown input:not(:checked) + .a-dropdown-content{
+    display: none;
+}
+
+#mobNavigation.open #mobNavLogo{
+
+}
+
+#mobNavigation:not(.open) #mobNavBg, #mobNavigation:not(.open) #mobNavLinks{
+    pointer-events: none;
+    opacity: 0;
 }
 
 .cta{
@@ -215,51 +311,39 @@ footer{
     background: #161113;
     color: #fff;
     padding: 3em 0;
+    color: #aaa;
 }
 
 footer h5{
     margin-bottom: 1.5em;
 }
 
-footer h5 i.fa{
-    color: #555;
+footer #socials a{
+    background: #555;
+    align-items: center;
+    line-height: 34px;
+}
+footer i.fa{
+    color: #000;
     font-size: 1.4em;
 }
 
-#twitterFeed{
-    max-width: 300px;
-    font-size: 0.8em;
-}
-
-#twitterFeed p:not(:first-child){
-    margin-top: 1.2em;
-}
-
-#footerRight{
-    flex-shrink: 0;
-}
-
-#footerRight p{
-    text-align: center;
+.footer-section > a{
+    display: block;
+    padding: 0.3em 0;
     font-size: 0.9em;
-    padding: 0.5em 0;
 }
 
-#footerNav{
-    font-size: 0.8em;
+footer #copyright{
+    margin-top: 3em;
+    padding-top: 2em;
+    border-top: 1px solid #333;
+    color: #888;
 }
 
-#footerNav a:not(:last-child):after{
-    content: '|';
-    padding-left: 0.3em;
+footer #copyright a{
+    color: #bbb;
 }
-
-
-
-
-
-
-
 
 @media screen and (min-width: 681px){
     .for-mob{
@@ -270,5 +354,40 @@ footer h5 i.fa{
 @media screen and (max-width: 680px){
     .for-lg{
         display: none !important;
+    }
+
+    .footer-section{
+        width: 50%;
+        margin-bottom: 2em;
+    }
+
+    footer #copyright{
+        margin-top: 1em;
+        margin-bottom: -1.5em;
+        border-top-color: #555;
+        flex-direction: column;
+    }
+
+    footer #copyright > span{
+        margin-bottom: 0.8em;
+    }
+
+    .cta .text{
+        padding: 0 2em;
+        min-height: 300px;
+    }
+
+    .cta .text h5{
+        font-size: 1.6em;
+    }
+
+    .cta .text p{
+        max-width: 90%;
+    }
+
+    .cta .text .btn{
+        min-width: 0;
+        border-radius: 50px;
+        padding: 0.9em 2.6em;
     }
 }

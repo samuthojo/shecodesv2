@@ -83,7 +83,7 @@
         </div>
 
         <div id="updatesLink">
-            <a href="#" class="layout inline center">
+            <a href="https://medium.com/@shecodesforchange" class="layout inline center">
                 More
                 <i class="layout center-center">
                     <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

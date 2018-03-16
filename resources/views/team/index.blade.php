@@ -1,3 +1,7 @@
+@php
+    $page = "team";
+@endphp
+
 @extends('layouts.app')
 
 @section('title')
@@ -25,7 +29,7 @@
                         If that's not a cause worth backing I don't know what is.</span><span>...<a href="#readMore" onclick="document.getElementById('founderDesc').classList.toggle('full')">read </a></span>
                 </p>
 
-                <a href="#" id="moreAboutFounder">Learn more about Abella</a>
+                <a href="http://abellabateyunga.com" target="_blank" id="moreAboutFounder">Learn more about Abella</a>
             </div>
         </section>
 
@@ -61,52 +65,45 @@
             <div class="layout wrap list">
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer1.jpg')}}" alt="">
+                        <img src="{{asset('images/simon.jpg')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Simon Mutabazi</div>
+                    <div class="desc">Project Manager</div>
                 </div>
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer2.jpg')}}" alt="">
+                        <img src="{{asset('images/rehema.jpg')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Rehema Mtandika</div>
+                    <div class="desc">Hub Manager</div>
                 </div>
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer3.jpg')}}" alt="">
+                        <img src="{{asset('images/doreen2.jpg')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Doreen Bateyunga</div>
+                    <div class="desc">Logistics Lead</div>
                 </div>
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer1.jpg')}}" alt="">
+                        <img src="{{asset('images/mujuni.jpg')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Mujuni Baitan</div>
+                    <div class="desc">Logistics</div>
                 </div>
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer2.jpg')}}" alt="">
+                        <img src="{{asset('images/eben.png')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Ebenhard Oswald</div>
+                    <div class="desc">Logistics</div>
                 </div>
                 <div class="item">
                     <div class="image">
-                        <img src="{{asset('images/staffer3.jpg')}}" alt="">
+                        <img src="{{asset('images/leroy.jpg')}}" alt="">
                     </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
-                </div>
-                <div class="item">
-                    <div class="image">
-                        <img src="{{asset('images/staffer1.jpg')}}" alt="">
-                    </div>
-                    <div class="name">Jane Doe</div>
-                    <div class="desc">Jane here is one of the staffers ya'll.</div>
+                    <div class="name">Leroy Sanyi</div>
+                    <div class="desc">Logistics</div>
                 </div>
             </div>
         </section>

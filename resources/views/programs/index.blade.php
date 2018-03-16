@@ -1,3 +1,8 @@
+@php
+    $colored_logo = true;
+    $page = "programs";
+@endphp
+
 @extends('layouts.app')
 
 @section('title')
@@ -11,7 +16,7 @@
 @section('content')
     @include('programs.banner')
     @include('programs.curriculum')
-    @include('about.cta-join')
+    @include('programs.cta-join')
     @include('programs.activities')
     @include('programs.partners')
 @endsection

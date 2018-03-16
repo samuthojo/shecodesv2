@@ -13,7 +13,7 @@
                     <img src="{{asset('images/prog1.jpg')}}" alt="">
                 </div>
                 <div class="text">
-                    <h5>February 2015</h5>
+                    <span>February 2015</span>
                     <h3>Trainers Meetup - Arusha, Tanzania</h3>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <img src="{{asset('images/prog2.jpg')}}" alt="">
                 </div>
                 <div class="text">
-                    <h5>February 2015</h5>
+                    <span>February 2015</span>
                     <h3>Trainers Meetup - Arusha, Tanzania</h3>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <img src="{{asset('images/prog3.jpg')}}" alt="">
                 </div>
                 <div class="text">
-                    <h5>February 2015</h5>
+                    <span>February 2015</span>
                     <h3>Trainers Meetup - Arusha, Tanzania</h3>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <img src="{{asset('images/prog4.jpg')}}" alt="">
                 </div>
                 <div class="text">
-                    <h5>February 2015</h5>
+                    <span>February 2015</span>
                     <h3>Trainers Meetup - Arusha, Tanzania</h3>
                 </div>
             </div>

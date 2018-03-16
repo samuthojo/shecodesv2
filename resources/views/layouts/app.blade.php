@@ -36,6 +36,18 @@
     </script>
 
     <style>
+        @media screen and (min-width: 681px){
+            .for-mob{
+                display: none !important;
+            }
+        }
+
+        @media screen and (max-width: 680px){
+            .for-lg{
+                display: none !important;
+            }
+        }
+
         #alertMessage{
             position: fixed;
             top: 60px;

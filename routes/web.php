@@ -32,6 +32,10 @@ Route::get('/programs', function () {
     return view('programs.index');
 });
 
+Route::get('/programs/{slug}', function () {
+    return redirect('programs');
+});
+
 Route::get('/team', function () {
     return view('team.index');
 });

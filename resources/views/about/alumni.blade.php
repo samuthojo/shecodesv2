@@ -1,4 +1,4 @@
-<section id="sectionAlumni">
+<section id="sectionAlumni" class="for-lg">
     <div class="section-wrapper">
         <h1>Shecodes Alumni</h1>
         @for($i = 0; $i < 1; $i++)
@@ -24,28 +24,27 @@
     </div>
 </section>
 
+<section id="mobAlumni" class="for-mob">
+    <div class="section-wrapper">
+        <h1>Shecodes Alumni</h1>
 
-<script>
-    function highlightMonths(hovered, eqs) {
-        $.each(eqs, function(i, v) {
-            if(hovered)
-                $('.month').eq(v).addClass('hovered');
-            else
-                $('.month').eq(v).removeClass('hovered');
-        });
-    }
+        <div id="mobDps" class="layout">
+            @for($i = 0; $i < 3; $i++)
+                <div class="dp {{$i == 0 ? 'active' : ''}}" style="-webkit-background-size: cover;background-size: cover;background-image: url({{asset('images/alumni'. ($i+1) .'.jpg')}});"></div>
+            @endfor
+        </div>
 
-    $('.program').on('mouseover', function(){
-        highlightMonths(true, getTargetMonths($(this).data('when')));
-    })
-        .on('mouseleave', function(){
-            highlightMonths(false, getTargetMonths($(this).data('when')));
-        });
+        @for($i = 0; $i < 1; $i++)
+            <div class="alumni layout justified">
+                <div class="text layout vertical justified">
+                    <div class="text">
+                        <h3>{{$names[$i]}}</h3>
+                        <p>{{$descriptions[$i]}}</p>
+                    </div>
 
-    function getTargetMonths(str){
-        var month_array = [];
-        month_array.push(str);
-        return isFinite(str) ? month_array : str.split(",");
-    }
-
-</script>
+                    <span>CLASS OF 2015</span>
+                </div>
+            </div>
+        @endfor
+    </div>
+</section>

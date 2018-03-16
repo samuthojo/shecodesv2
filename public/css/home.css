@@ -232,3 +232,42 @@
     display: inline-block;
     margin-top: 0.5em;
 }
+
+@media screen and (max-width: 680px){
+    #sectionBanner .section-wrapper{
+        max-height: 70vh;
+    }
+
+    #welcome{
+        max-width: 26%;
+        margin-right: 1.2em;
+    }
+
+    #welcome p{
+        font-size: 1.1em;
+        line-height: 1.5em;
+        margin-bottom: 1em;
+    }
+
+    #welcome a{
+        font-size: 0.98em;
+    }
+
+    .about-section{
+        flex-basis: 100%;
+        margin-bottom: 1em;
+    }
+
+    .an-update{
+        margin: 1em 0;
+        flex-basis: 100%;
+    }
+
+    #ctaTestimonials{
+        padding: 1em 0;
+    }
+
+    #ctaTestimonials q{
+        font-size: 1em;
+    }
+}

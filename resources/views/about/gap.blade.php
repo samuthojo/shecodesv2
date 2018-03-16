@@ -4,7 +4,7 @@
 
         <div>
             <h5>
-                Bridging<span class="for-lg"><br></span>the gap
+                Bridging<span class="for-lg"><br></span><span class="for-mob"> </span>the gap
             </h5>
             <p>
                 A huge percent of girls are still not considering computer and other tech related careers as 'not for them'.

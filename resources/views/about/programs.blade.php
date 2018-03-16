@@ -1,26 +1,26 @@
 <section id="sectionPrograms">
     <h1>Our Programs</h1>
     <div class="section-wrapper">
-        <div class="time-line layout">
+        <div class="time-line layout for-lg">
             @foreach($months as $month)
                 <div class="month flex layout center-center {{in_array($loop->index, $active_months) ? "active" : ""}}">{{substr($month, 0, 3)}}</div>
             @endforeach
         </div>
 
         <div class="programs">
-            <div class="program" data-when="2">
+            <div class="program" data-when="2" month="march">
                 <h1>Girls In ICT</h1>
                 <p>She Codes for Change (SCC) initiative seeks to nurture young girls to develop interest in Science, Technology, Engineering, Arts/Design and Mathematics (STEAM) careers at early stage of their careers choices through basic coding skills.
                     <br/> <a href="#">Learn more</a>
                 </p>
             </div>
-            <div class="program" data-when="5,6">
+            <div class="program" data-when="5,6" month="may">
                 <h1>Summer Camp</h1>
                 <p>She Codes for Change (SCC) initiative seeks to nurture young girls to develop interest in Science, Technology, Engineering, Arts/Design and Mathematics (STEAM) careers at early stage of their careers choices through basic coding skills.
                     <br/><a href="#">Learn more</a>
                 </p>
             </div>
-            <div class="program" data-when="10,11">
+            <div class="program" data-when="10,11" month="october">
                 <h1>Holiday Program</h1>
                 <p>She Codes for Change (SCC) initiative seeks to nurture young girls to develop interest in Science, Technology, Engineering, Arts/Design and Mathematics (STEAM) careers at early stage of their careers choices through basic coding skills.
                     <br/> <a href="#">Learn more</a>

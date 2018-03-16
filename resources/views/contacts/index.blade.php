@@ -1,3 +1,8 @@
+@php
+    $colored_logo = true;
+    $page = "contacts";
+@endphp
+
 @extends('layouts.app')
 
 @section('title')
