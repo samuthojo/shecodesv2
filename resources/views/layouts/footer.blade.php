@@ -24,16 +24,16 @@
             <div class="footer-section">
                 <h5>STAY CONNECTED</h5>
                 <div id="socials">
-                    <a target="_blank" href="http://www.facebook.com/SHE-Codes-For-Change-1022018851231323/?fref=ts">
+                    <a target="_blank" class="facebook" href="http://www.facebook.com/SHE-Codes-For-Change-1022018851231323/?fref=ts">
                         <i class="fa fa-facebook"></i>
                     </a>
-                    <a target="_blank" href="http://twitter.com/SheCodes4TZ">
+                    <a target="_blank" class="twitter" href="http://twitter.com/SheCodes4TZ">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a target="_blank" href="http://www.instagram.com/shecodes4tz/">
+                    <a target="_blank" class="instagram" href="http://www.instagram.com/shecodes4tz/">
                         <i class="fa fa-instagram"></i>
                     </a>
-                    <a target="_blank" href="http://www.youtube.com/channel/UCMUBgmqGInEuweRA4qCxw6A">
+                    <a target="_blank" class="youtube" href="http://www.youtube.com/channel/UCMUBgmqGInEuweRA4qCxw6A">
                         <i class="fa fa-youtube-play"></i>
                     </a>
                 </div>

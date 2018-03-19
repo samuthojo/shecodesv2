@@ -94,7 +94,6 @@ h1, h2, h3, h4, h5, h6, .bold-text{
 
 main{
     display: block;
-    min-height: 200vh;
 }
 
 button:not(.unstyled){
@@ -321,10 +320,31 @@ footer h5{
 footer #socials a{
     background: #555;
     align-items: center;
-    line-height: 34px;
+    width: 40px;
+    height: 40px;
+    line-height: 44px;
 }
+
+footer #socials a.facebook{
+    background:  #3b5998;;
+}
+
+footer #socials a.twitter{
+    background:  #55acee;;
+}
+
+footer #socials a.youtube{
+    background:  #ff0000;
+}
+
+footer #socials a.instagram{
+    background-color: #e4e4e4;
+    background: -webkit-radial-gradient(circle farthest-corner at 35% 90%, #fec564, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(circle farthest-corner at 0 140%, #fec564, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, rgba(0, 0, 0, 0) 50%), -webkit-radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, rgba(0, 0, 0, 0)), -webkit-linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, rgba(0, 0, 0, 0) 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, rgba(0, 0, 0, 0) 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, rgba(0, 0, 0, 0)), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+}
+
 footer i.fa{
-    color: #000;
+    color: #fff;
     font-size: 1.4em;
 }
 
@@ -389,5 +409,9 @@ footer #copyright a{
         min-width: 0;
         border-radius: 50px;
         padding: 0.9em 2.6em;
+    }
+
+    footer #socials a{
+        margin: 0.6em 1.5em;
     }
 }

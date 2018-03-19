@@ -4,10 +4,10 @@
 
         <div id="updatesList" class="layout wrap">
             <div class="an-update">
-                <div class="media layout vertical">
+                <div class="media layout vertical" style="background-image: url({{asset('images/blog1.jpg')}});">
                     <div class="title-bar layout justified">
                         <h5>
-                            INSPIRATION
+                            LEARNING
                         </h5>
 
                         <div class="reactions">
@@ -15,7 +15,7 @@
                                 <i class="fa fa-comment"></i>&nbsp;7
                             </span>
                             <span class="reaction">
-                                <i class="fa fa-favorite-o"></i>&nbsp;15
+                                <i class="fa fa-heart-o"></i>&nbsp;15
                             </span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="an-update">
-                <div class="media layout vertical">
+                <div class="media layout vertical" style="background-image: url({{asset('images/blog2.jpg')}});">
                     <div class="title-bar layout justified">
                         <h5>
                             INSPIRATION
@@ -38,10 +38,10 @@
 
                         <div class="reactions">
                             <span class="reaction">
-                                <i class="fa fa-comment"></i>&nbsp;7
+                                <i class="fa fa-comment"></i>&nbsp;3
                             </span>
                             <span class="reaction">
-                                <i class="fa fa-favorite-o"></i>&nbsp;15
+                                <i class="fa fa-heart-o"></i>&nbsp;8
                             </span>
                         </div>
                     </div>
@@ -56,18 +56,18 @@
             </div>
 
             <div class="an-update">
-                <div class="media layout vertical">
+                <div class="media layout vertical" style="background-image: url({{asset('images/blog3.jpg')}});">
                     <div class="title-bar layout justified">
                         <h5>
-                            INSPIRATION
+                            LIFESTYLE
                         </h5>
 
                         <div class="reactions">
                             <span class="reaction">
-                                <i class="fa fa-comment"></i>&nbsp;7
+                                <i class="fa fa-comment"></i>&nbsp;9
                             </span>
                             <span class="reaction">
-                                <i class="fa fa-favorite-o"></i>&nbsp;15
+                                <i class="fa fa-heart-o"></i>&nbsp;17
                             </span>
                         </div>
                     </div>
