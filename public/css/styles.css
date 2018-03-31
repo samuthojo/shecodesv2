@@ -190,7 +190,7 @@ footer #socials a{
 
 #mobNavLogo{
     background: #fff;
-    height: 74px;
+    height: 64px;
     padding: 10px 20px;
     color: #000;
     pointer-events: auto;
@@ -390,6 +390,8 @@ footer #copyright a{
 
     footer #copyright > span{
         margin-bottom: 0.8em;
+        text-align: center;
+        line-height: 1.4em;
     }
 
     .cta .text{
@@ -411,7 +413,11 @@ footer #copyright a{
         padding: 0.9em 2.6em;
     }
 
+    footer #sectionIcons{
+        width: 100% !important;
+    }
+
     footer #socials a{
-        margin: 0.6em 1.5em;
+        /*margin: 0.6em 1.5em;*/
     }
 }

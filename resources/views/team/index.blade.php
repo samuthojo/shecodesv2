@@ -40,22 +40,19 @@
                     <div class="image">
                         <img src="{{asset('images/director1.jpg')}}" alt="">
                     </div>
-                    <div class="name">Mr/s Director</div>
-                    <div class="desc">This right here is one of our awesome directors.</div>
+                    <div class="name">Godfrey Nyombi</div>
                 </div>
                 <div class="item">
                     <div class="image">
                         <img src="{{asset('images/director2.jpg')}}" alt="">
                     </div>
-                    <div class="name">Mr/s Director</div>
-                    <div class="desc">This right here is one of our awesome directors.</div>
+                    <div class="name">Rose Funja</div>
                 </div>
                 <div class="item">
                     <div class="image">
                         <img src="{{asset('images/director3.jpg')}}" alt="">
                     </div>
-                    <div class="name">Mr/s Director</div>
-                    <div class="desc">This right here is one of our awesome directors.</div>
+                    <div class="name">Jumanne Mtambalike</div>
                 </div>
             </div>
         </section>

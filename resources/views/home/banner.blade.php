@@ -24,7 +24,7 @@
         </a>
     </div>
 
-    <video id="bannerVideo" autoplay muted preload loop width="100%"></video>
+    <video id="bannerVideo" autoplay muted loop width="100%"></video>
 
     <div id="loader" class="layout center-center">
         <div></div>
@@ -43,13 +43,18 @@
 
     function loadVideo(){
         if(!loaded){
-            loaded = true;
-
             wrapper.classList.add("loading");
-            video.oncanplaythrough = function() {
+
+            if (video.readyState >= video.HAVE_FUTURE_DATA) {
+                loaded = true;
                 completeLoad();
-            };
-            video.src = vid_url;
+            } else {
+                video.oncanplaythrough = function() {
+                    loaded = true;
+                    completeLoad();
+                };
+                video.src = vid_url;
+            }
         }else{
             wrapper.classList.add("video-loaded");
             video.currentTime = 0;

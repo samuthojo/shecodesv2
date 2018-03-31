@@ -171,26 +171,26 @@ table {
     font-family: "Bold";
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/QuickSand-Bold.ttf');
+    src: url('../fonts/BentonSansBold.otf');
 }
 
 @font-face {
     font-family: "Light";
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/QuickSand-Light.ttf');
+    src: url('../fonts/BentonSansLight.otf');
 }
 
 @font-face {
     font-family: "SemiBold";
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/QuickSand-Medium.ttf');
+    src: url('../fonts/BentonSansMedium.otf');
 }
 
 @font-face {
     font-family: "Regular";
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/QuickSand-Regular.ttf');
+    src: url('../fonts/BentonSansRegular.otf');
 }

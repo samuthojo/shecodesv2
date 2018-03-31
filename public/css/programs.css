@@ -119,7 +119,8 @@
 #sectionCurriculum .section-wrapper > p,
 #sectionActivities .section-wrapper > p{
     margin-bottom: 4em;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    line-height: 1.3em;
 }
 
 .course{
@@ -137,6 +138,7 @@
 
 .course p{
     font-size: 0.9em;
+    line-height: 1.3em;
 }
 
 .course .image{
@@ -202,7 +204,8 @@
 
 @media screen and (max-width: 680px){
     #sectionBanner .section-wrapper{
-        max-height: 70vh;
+        height: 100vh;
+        max-height: 530px;
     }
 
     #bannerText{
@@ -210,10 +213,16 @@
     }
 
     #sectionBanner .btn{
-        margin-top: 2em;
+        margin-top: 0;
+        display: block;
         margin-right: 0.6em;
         min-width: 0;
-        padding: 0.9em 1.6em;
+        padding: 1.2em 1.6em;
+    }
+
+    #sectionBanner .btn-watch{
+        margin-top: 2em !important;
+        margin-bottom: 1em;
     }
 
     .course{
@@ -236,7 +245,7 @@
     }
 
     .activity .image{
-        height: 200px;
+        height: 175px;
     }
 
     #sectionPartners #thePartners{

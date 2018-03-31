@@ -45,7 +45,7 @@ main {
     height: 3000px;
     background-size: 2000px;
     /*background-position: center;*/
-    transform: rotate(-10deg) translate(-10%, 30%)
+    transform: rotate(-10deg) translate(-10%, 27%)
 }
 
 #contactsPage #rotatedBg .scrim{

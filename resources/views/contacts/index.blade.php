@@ -65,7 +65,7 @@
         </div>
 
         <div id="rotatedBg">
-            <div class="image" style="background-image: url({{asset('images/girls.jpg')}});"></div>
+            <div class="image" style="background-image: url({{asset('images/scgirls.jpg')}});"></div>
             <div class="scrim"></div>
         </div>
         <div id="contactWrapper" class="layout">

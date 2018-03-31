@@ -5,7 +5,7 @@
             Learn HTML, SCRATCH, JAVA and many other skills with
             fellow girls at our state of the art Binti Hub for FREE!
         </p>
-        <a href="#" class="btn">
+        <a href="http://goo.gl/forms/cCa1Ox5ZJj" target="_blank" class="btn">
             Register Today
         </a>
     </div>
