@@ -1,6 +1,31 @@
 
 window._ = require('lodash');
+
 window.Popper = require('popper.js').default;
+
+window.Vue = require('vue');
+
+window.programStore = require('./stores/programStore.js').default;
+
+window.courseStore = require('./stores/courseStore.js').default;
+
+window.staffStore = require('./stores/staffStore.js').default;
+
+window.testimonialStore = require('./stores/testimonialStore.js').default;
+
+window.alumniStore = require('./stores/alumniStore.js').default;
+
+window.activityStore = require('./stores/activityStore.js').default;
+
+window.partnerStore = require('./stores/partnerStore.js').default;
+
+window.globals = require('./utilities/GlobalFunctions.js').default;
+
+window.Form = require('./utilities/Form.js').default;
+
+window.Crud = require('./utilities/Crud.js').default;
+
+window.Program = require('./models/Program.js').default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -13,6 +38,8 @@ try {
 
     require('bootstrap');
 } catch (e) {}
+
+require('bootstrap-datepicker');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
