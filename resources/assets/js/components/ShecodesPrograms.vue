@@ -40,6 +40,7 @@
 </template>
 
 <script>
+var programFields = require('./form-fields/ProgramFormFields')
 
 export default {
 
@@ -47,7 +48,10 @@ export default {
     return {
       programs: [],
       itemsToDisplay: 3,
-      curPage: 1
+      curPage: 1,
+      schema: {
+        fields: programFields.getFormFields() 
+      }
     }
   },
 
