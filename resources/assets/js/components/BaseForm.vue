@@ -10,12 +10,15 @@
       :show-success="form.notification.showSuccess"
       :show-error="form.notification.showError"/>
 
-    <component-title
-      @close="onClose">
+    <the-form-title-bar @close="onClose">
+
       <template slot="header">
+
         <h3> {{ formTitle }} </h3>
+        
       </template>
-    </component-title>
+
+    </the-form-title-bar>
 
     <form @submit.prevent="$emit('submit', form)"
           @keydown="form.errors.clear($event.target.name)">

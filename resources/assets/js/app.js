@@ -60,13 +60,21 @@ require('./bootstrap')
 
 Vue.component('base-header', require('./components/BaseHeader.vue'))
 
-Vue.component('component-title', require('./components/ComponentTitle.vue'))
+Vue.component('the-form-title-bar', require('./components/TheFormTitleBar.vue'))
 
 Vue.component('base-notification', require('./components/BaseNotification.vue'))
 
 Vue.component('base-item', require('./components/BaseItem.vue'))
 
 Vue.component('base-list', require('./components/BaseList.vue'))
+
+Vue.component('base-text-input', require('./components/BaseTextInput.vue'))
+
+Vue.component('base-text-area', require('./components/BaseTextArea.vue'))
+
+Vue.component('base-radio-input', require('./components/BaseRadioInput.vue'))
+
+Vue.component('base-form', require('./components/BaseForm.vue'))
 
 Vue.component('program-form', require('./components/ProgramForm.vue'))
 
