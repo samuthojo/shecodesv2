@@ -14,15 +14,15 @@ class AlumniController extends Controller
      */
     public function index()
     {
-      return view('cms.alumni');
+        return view('cms.alumni');
     }
 
     public function alumni()
     {
         return Alumni::where('archived', false)
                     ->get()->map(function ($alumni) {
-                      $alumni->picture_url = $alumni->getFirstMediaUrl('alumni_pictures');
-                      return $alumni;
+                        $alumni->picture_url = $alumni->getFirstMediaUrl('alumni_pictures');
+                        return $alumni;
                     });
     }
 
@@ -34,16 +34,16 @@ class AlumniController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, $this->rules(), $this->messages());
-      $alumni =  Alumni::create($request->all());
-      if ($alumni && $request->hasFile('picture')) {
-        //clear existing
-        $alumni->clearMediaCollection('alumni_pictures');
-        //attach new
-        $alumni->addMediaFromRequest('picture')
+        $this->validate($request, $this->rules(), $this->messages());
+        $alumni =  Alumni::create($request->all());
+        if ($alumni && $request->hasFile('picture')) {
+            //clear existing
+            $alumni->clearMediaCollection('alumni_pictures');
+            //attach new
+            $alumni->addMediaFromRequest('picture')
               ->toMediaCollection('alumni_pictures');
-      }
-      return $alumni;
+        }
+        return $alumni;
     }
 
     /**
@@ -51,8 +51,9 @@ class AlumniController extends Controller
      *
      * @return array
      */
-    private function rules(string $id = null) {
-      return [
+    private function rules(string $id = null)
+    {
+        return [
         'name' => 'required|string|unique:alumni,name,'. $id,
         'position' => 'required',
         'is_director' => 'required|boolean',
@@ -66,8 +67,9 @@ class AlumniController extends Controller
      *
      * @return array
      */
-    private function messages() {
-      return [
+    private function messages()
+    {
+        return [
         'name.unique' => 'A alumni with same name exists',
       ];
     }
@@ -81,8 +83,8 @@ class AlumniController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, $this->rules($id), $this->messages());
-      return Alumni::updateOrCreate(compact('id'), $request->all());
+        $this->validate($request, $this->rules($id), $this->messages());
+        return Alumni::updateOrCreate(compact('id'), $request->all());
     }
 
     /**
@@ -93,8 +95,8 @@ class AlumniController extends Controller
      */
     public function archive(Alumni $alumni)
     {
-      $alumni->archived = true;
-      return $alumni->save();
+        $alumni->archived = true;
+        return $alumni->save();
     }
 
     /**
