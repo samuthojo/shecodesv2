@@ -23,10 +23,11 @@
 
     <div class="shecodes-container col-md-6" v-show="shouldDisplay">
 
-      <program-form
-        v-show="currentComponent == 'program-form'"
+      <base-form
+        v-show="currentComponent == 'base-form'"
         ref="programForm"
-        @submit="onCreateProgram"
+        :schema="schema"
+        @create="onCreateProgram"
         @update="onUpdateProgram"/>
 
       <program-view
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-var programFields = require('./form-fields/ProgramFormFields')
+var programFields = require('../form-fields/ProgramFormFields')
 
 export default {
 
@@ -50,44 +51,47 @@ export default {
       itemsToDisplay: 3,
       curPage: 1,
       schema: {
-        fields: programFields.getFormFields() 
+        fields: programFields()
       }
     }
   },
 
   created() {
+
     Program.getPrograms()
-          .then(({data}) => this.programs=data)
-          .catch(error => console.error(error))
+
+           .then(({data}) => this.programs = data)
+
+           .catch(error => console.error(error))
   },
 
   computed: {
 
-    programCount: function () {
+    programCount: function() {
       return this.programs.length
     },
 
-    start: function () {
-      if(this.programCount)
+    start: function() {
+      if (this.programCount)
         return 1
       return 0
     },
 
-    end: function () {
-      if(this.start)
+    end: function() {
+      if (this.start)
         return this.itemsToDisplay * this.curPage
       return 0
     },
 
-    shouldDisplay: function () {
+    shouldDisplay: function() {
       return programStore.state.shouldDisplay
     },
 
-    containerWidth: function () {
+    containerWidth: function() {
       return (this.shouldDisplay) ? 'col-md-6' : 'col-md-12'
     },
 
-    currentComponent: function () {
+    currentComponent: function() {
       return programStore.state.currentComponent
     }
 
@@ -96,23 +100,36 @@ export default {
   methods: {
 
     onCreateClicked() {
-      this.$refs.programForm.setEditMode("New Program", {}, true)
-      programStore.setShowCreateAction(false)
-      programStore.setCurrentComponent('program-form')
-      programStore.setShouldDisplay(true)
+      this.$refs.programForm.formTitle = "New Program"
+
+      this.$refs.programForm.form = new Form(new Program())
+
+      this.$refs.programForm.isCreateAction = true
+
+      this.setUp('base-form', false)
     },
 
     onViewClicked(program) {
       this.$refs.programView.setProgram(program)
-      programStore.setShowCreateAction(true)
-      programStore.setCurrentComponent('program-view')
-      programStore.setShouldDisplay(true)
+
+      this.setUp('program-view', true)
     },
 
     onEditClicked(program) {
-      this.$refs.programForm.setEditMode("Edit Program", program, false)
-      programStore.setShowCreateAction(true)
-      programStore.setCurrentComponent('program-form')
+      this.$refs.programForm.formTitle = "Program Details"
+
+      this.$refs.programForm.form = new Form(program)
+
+      this.$refs.programForm.isCreateAction = false
+
+      this.setUp('base-form', true)
+    },
+
+    setUp(component, showCreate) {
+      programStore.setShowCreateAction(showCreate)
+
+      programStore.setCurrentComponent(component)
+
       programStore.setShouldDisplay(true)
     },
 
@@ -138,16 +155,16 @@ export default {
 
       Crud.patch(url, form)
 
-          .then(({data}) => {
+        .then(({data}) => {
 
-            let index = globals.getIndex(this.programs, data)
+          let index = globals.getIndex(this.programs, data)
 
-            //replace existing program with the updated one
-            this.programs.splice(index, 1, data)
+          //replace existing program with the updated one
+          this.programs.splice(index, 1, data)
 
-          })
+        })
 
-          .catch(error => console.error())
+        .catch(error => console.error())
 
     },
 
@@ -157,21 +174,20 @@ export default {
 
       Crud.archive(url)
 
-          .then(({data}) => {
+        .then(({data}) => {
 
-            let index = globals.getIndex(this.programs, data)
+          let index = globals.getIndex(this.programs, data)
 
-            this.programs.splice(index, 1) //remove from programs array
+          this.programs.splice(index, 1) //remove from programs array
 
-          })
+        })
 
-          .catch(error => console.error())
+        .catch(error => console.error())
     }
 
   }
 
 }
-
 </script>
 
 <style lang="css">

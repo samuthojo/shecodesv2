@@ -15,12 +15,12 @@
       <template slot="header">
 
         <h3> {{ formTitle }} </h3>
-        
+
       </template>
 
     </the-form-title-bar>
 
-    <form @submit.prevent="$emit('submit', form)"
+    <form @submit.prevent="onSubmit"
           @keydown="form.errors.clear($event.target.name)">
 
       <template v-for="field in schema.fields">
@@ -28,10 +28,19 @@
         <component
           :is="field.type"
           :field="field"
-          :data.sync="data[field.name]">
+          :entity.sync="form[field.name]">
         </component>
 
       </template>
+
+      <div class="form-group">
+
+        <button
+          type="submit"
+          class="btn btn-primary float-right"
+          :disabled="form.errors.any()">Submit</button>
+
+      </div>
 
     </form>
 
@@ -43,16 +52,34 @@
 export default {
 
   props: {
-
     schema: {
       type: Object,
       required: true
     },
+  },
 
-    entity: {
-      type: Object
+  data() {
+    return {
+      form: new Form({}),
+      formTitle: '',
+      isCreateAction: false
     }
+  },
 
+  methods: {
+    onSubmit() {
+      if(this.isCreateAction) {
+        this.$emit('create', this.form)
+      }
+      else {
+        this.$emit('update', this.form)
+      }
+    },
+    onClose() {
+      programStore.setShouldDisplay(false)
+
+      programStore.setShowCreateAction(true)
+    }
   }
 
 }

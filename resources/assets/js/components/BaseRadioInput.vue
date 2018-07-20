@@ -7,8 +7,11 @@
       <input
         type="radio"
         class="form-check-input"
-        name="optradio">{{ field.label }}
-        
+        name="optradio"
+        :value="entity"
+        @input="$emit('update:entity', $event.target.value)"
+        required>{{ field.label }}
+
     </label>
 
   </div>
@@ -17,6 +20,14 @@
 
 <script>
 export default {
+  props: {
+    field: {
+      required: true
+    },
+    entity: {
+      required: true
+    }
+  }
 }
 </script>
 

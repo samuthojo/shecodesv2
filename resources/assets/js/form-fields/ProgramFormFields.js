@@ -1,4 +1,4 @@
-exports.getFormFields = function () {
+var programFormFields = function () {
 
     return [
       {
@@ -10,25 +10,25 @@ exports.getFormFields = function () {
       {
         type: 'base-text-area',
         label: 'Program Description:',
-        name: 'name',
+        name: 'description',
         placeholder: ''
       },
       {
         type: 'base-text-area',
         label: 'Curriculum Description:',
-        name: 'name',
+        name: 'curriculum_description',
         placeholder: ''
       },
       {
         type: 'base-text-input',
         label: 'Video Link:',
-        name: 'name',
+        name: 'video_link',
         placeholder: ''
       },
       {
         type: 'base-text-input',
         label: 'Form Link:',
-        name: 'name',
+        name: 'form_link',
         placeholder: ''
       },
       {
@@ -40,3 +40,5 @@ exports.getFormFields = function () {
     ]
 
 }
+
+module.exports = programFormFields

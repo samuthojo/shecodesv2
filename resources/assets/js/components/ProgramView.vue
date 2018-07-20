@@ -2,12 +2,11 @@
 
   <div class="container-fluid">
 
-    <component-title
-      @close="onClose">
+    <the-form-title-bar @close="onClose">
       <template slot="header">
         <h3> {{ program.name }}</h3>
       </template>
-    </component-title>
+    </the-form-title-bar>
 
     <p class="card-text">{{ program.description }}</p>
     <p class="card-text links">

@@ -2,7 +2,7 @@ export default {
   debug: true,
   state: {
     shouldDisplay: false,
-    currentComponent: 'program-form',
+    currentComponent: '',
     showCreateAction: true
   },
   setCurrentComponent (newComponent) {

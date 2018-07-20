@@ -74,6 +74,8 @@ Vue.component('base-text-area', require('./components/BaseTextArea.vue'))
 
 Vue.component('base-radio-input', require('./components/BaseRadioInput.vue'))
 
+Vue.component('base-file-input', require('./components/BaseFileInput.vue'))
+
 Vue.component('base-form', require('./components/BaseForm.vue'))
 
 Vue.component('program-form', require('./components/ProgramForm.vue'))
