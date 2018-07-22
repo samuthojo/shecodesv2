@@ -1,87 +1,24 @@
-body {
-  height: 100vh; /*Its immediate content will also take 100vh automatically*/
-  display: flex;
-  overflow: hidden;
-  font-size: 100%;
-}
-
-body > nav {
-  flex-shrink: 0;
-  position: relative !important;
-}
-
-body > main {
-  flex: 1;  /*Take all the remaining width*/
-}
-
-/*Bootstrap 4 container doesn't come with top and bottom paddings*/
-.container {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.shecodes-container {
-  height: calc(100vh - 30px);
-  overflow-y: auto;
-}
-
-.shecodes-container::-webkit-scrollbar {
-    width: 5px;
-}
-
-/* Track */
-.shecodes-container::-webkit-scrollbar-track {
-    background: #ccc;
-    border-radius: 8px;
-}
-
-/* Handle */
-.shecodes-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 8px;
-}
-
-/* Handle on hover */
-.shecodes-container::-webkit-scrollbar-thumb:hover {
-    background: #777;
-}
-
-.card-text {
-  text-align: justify;
-}
-
-.component-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.shecodes-img-container {
-  height: 300px;
-  overflow: hidden;
-}
-
-.shecodes-img {
-  width: 300px;
-  height: 100%;
-}
-
-.bold-text {
+.logo-text {
+  color: #FF69B4; 
   font-weight: bold;
 }
 
-.position-relative {
-  position: relative !important;
+.nav-title {
+  color: #FFF !important;
+  font-size: 100% !important;
+  font-weight: bold !important;
 }
 
-.flex {
-  display: flex;
+.card, .card-title{
+  /*font-weight: bold !important;*/
 }
 
-.flex-v-center {
-  align-items: center;
+.card-body > p {
+  font-weight: bold !important;
+  color: #f0ad4e;
+  /*color: #ffc107;*/
 }
 
-.flex-h-center {
-  justify-content: center;
+.dropdown-menu {
+  padding: 0;
 }

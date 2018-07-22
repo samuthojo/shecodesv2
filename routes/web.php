@@ -61,7 +61,7 @@ Route::view('/admin/login', 'admin.login');
 
 // Route::middleware('auth')->prefix('/admin')->group(function() {
 Route::prefix('/admin')->group(function() {
-  Route::get('/', 'ProgramController@index')->name('home');
+  Route::get('/', 'DashboardController@index')->name('home');
 
   Route::resources([
     'programs' => 'ProgramController',

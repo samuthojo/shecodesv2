@@ -1,7 +1,10 @@
-@extends('cms.templates.root')
+@extends('cms.layouts.cms')
 
 @section('content')
 
-<shecodes-programs></shecodes-programs>
+<div class="container" id="container">
+  
+</div>
+
 
 @endsection

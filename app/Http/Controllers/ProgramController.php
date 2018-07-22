@@ -13,8 +13,11 @@ class ProgramController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('cms.programs');
+    {   
+        
+        return view('cms.programs', [
+          'programs' => \DB::table('programs')->get(),
+        ]);
     }
 
     /**

@@ -80,54 +80,16 @@ Vue.component('base-form', require('./components/BaseForm.vue'))
 
 Vue.component('program-form', require('./components/ProgramForm.vue'))
 
-Vue.component('program-view', require('./components/ProgramView.vue'))
-
-Vue.component('shecodes-programs', require('./components/ShecodesPrograms.vue'))
-
-Vue.component('course-form', require('./components/CourseForm.vue'))
-
-Vue.component('course-view', require('./components/CourseView.vue'))
-
-Vue.component('shecodes-courses', require('./components/ShecodesCourses.vue'))
-
-Vue.component('staff-form', require('./components/StaffForm.vue'))
-
-Vue.component('staff-view', require('./components/StaffView.vue'))
-
-Vue.component('shecodes-staff', require('./components/ShecodesStaff.vue'))
-
-Vue.component('partner-form', require('./components/PartnerForm.vue'))
-
-Vue.component('shecodes-partners', require('./components/ShecodesPartners.vue'))
-
-Vue.component('alumni-form', require('./components/AlumniForm.vue'))
-
-Vue.component('alumni-view', require('./components/AlumniView.vue'))
-
-Vue.component('shecodes-alumni', require('./components/ShecodesAlumni.vue'))
-
-Vue.component('testimonial-form', require('./components/TestimonialForm.vue'))
-
-Vue.component('testimonial-view', require('./components/TestimonialView.vue'))
-
-Vue.component('shecodes-testimonials', require('./components/ShecodesTestimonials.vue'))
-
-Vue.component('activity-form', require('./components/ActivityForm.vue'))
-
-Vue.component('activity-view', require('./components/ActivityView.vue'))
-
-Vue.component('shecodes-activities', require('./components/ShecodesActivities.vue'))
-
-var vm = new Vue({
-    el: '#app',
-    data: {
-      privateState: {},
-      programStore: programStore.state,
-      courseStore: courseStore.state,
-      staffStore: staffStore.state,
-      alumniStore: alumniStore.state,
-      activityStore: activityStore.state,
-      partnerStore: partnerStore.state,
-      testimonialStore: testimonialStore.state
-    }
-})
+// var vm = new Vue({
+//     el: '#app',
+//     data: {
+//       privateState: {},
+//       programStore: programStore.state,
+//       courseStore: courseStore.state,
+//       staffStore: staffStore.state,
+//       alumniStore: alumniStore.state,
+//       activityStore: activityStore.state,
+//       partnerStore: partnerStore.state,
+//       testimonialStore: testimonialStore.state
+//     }
+// })

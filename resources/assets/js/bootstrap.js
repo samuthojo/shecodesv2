@@ -5,19 +5,7 @@ window.Popper = require('popper.js').default;
 
 window.Vue = require('vue');
 
-window.programStore = require('./stores/programStore.js').default;
-
-window.courseStore = require('./stores/courseStore.js').default;
-
-window.staffStore = require('./stores/staffStore.js').default;
-
-window.testimonialStore = require('./stores/testimonialStore.js').default;
-
-window.alumniStore = require('./stores/alumniStore.js').default;
-
-window.activityStore = require('./stores/activityStore.js').default;
-
-window.partnerStore = require('./stores/partnerStore.js').default;
+window.CoreUI = require('@coreui/coreui');
 
 window.globals = require('./utilities/GlobalFunctions.js').default;
 
