@@ -8,7 +8,8 @@
     
     {{-- Required meta tags --}}
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, 
+                                  initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   
     {{-- DataTable Css --}}
@@ -61,13 +62,13 @@
               <i class="nav-icon cui-user"></i> Admin
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#"
+              <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
               </a>
-              <form id="logout-form" action=""
+              <form id="logout-form" action="{{ route('logout') }}"
                 method="POST" style="display: none;">{{ csrf_field() }}</form>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{ route('change_password') }}">
                 Change password
               </a>
             </div>

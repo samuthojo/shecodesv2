@@ -60,7 +60,7 @@
     </li>
     
     {{-- Learn Nav With DropDown Menu --}}
-    {{--<li class="nav-item nav-dropdown d-lg-none">
+    <li class="nav-item nav-dropdown d-lg-none">
       
       <a class="nav-link nav-dropdown-toggle" href="#">
         Account
@@ -85,7 +85,7 @@
         
       </ul>
       
-    </li>--}}
+    </li>
     
   </ul>
   

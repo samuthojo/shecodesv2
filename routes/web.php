@@ -59,8 +59,12 @@ Route::view('/admin/login', 'admin.login');
 //
 // });
 
-// Route::middleware('auth')->prefix('/admin')->group(function() {
-Route::prefix('/admin')->group(function() {
+Auth::routes();
+
+Route::view('/admin/login', 'cms.login')->name('admin_login');
+
+Route::middleware('auth')->prefix('/admin')->group(function() {
+// Route::prefix('/admin')->group(function() {
   Route::get('/', 'DashboardController@index')->name('home');
 
   Route::resources([
@@ -72,6 +76,9 @@ Route::prefix('/admin')->group(function() {
     'activities' => 'ActivityController',
     'testimonials' => 'TestimonialController',
   ]);
+  
+  Route::view('/change_password', 'cms.change_password')
+       ->name('change_password');
 });
 
 Route::prefix('/admin/api')->group(function() {
