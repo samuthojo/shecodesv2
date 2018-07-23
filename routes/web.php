@@ -44,21 +44,6 @@ Route::get('/contacts', function () {
     return view('contacts.index');
 });
 
-
-Route::view('/admin/login', 'admin.login');
-//
-//Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('cms_authenticate');
-//
-//Route::middleware('auth:admin')->prefix('/admin')->group(function() {
-//
-//});
-
-// Route::prefix('/admin')->group(function() {
-//
-//   Auth::routes();
-//
-// });
-
 Auth::routes();
 
 Route::view('/admin/login', 'cms.login')->name('admin_login');

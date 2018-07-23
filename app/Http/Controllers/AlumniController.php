@@ -14,7 +14,9 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        return view('cms.alumni');
+        return view('cms.alumni', [
+          'alumni' => Alumni::all(),
+        ]);
     }
 
     public function alumni()

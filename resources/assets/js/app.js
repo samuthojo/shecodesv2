@@ -80,16 +80,9 @@ Vue.component('base-form', require('./components/BaseForm.vue'))
 
 Vue.component('program-form', require('./components/ProgramForm.vue'))
 
-// var vm = new Vue({
-//     el: '#app',
-//     data: {
-//       privateState: {},
-//       programStore: programStore.state,
-//       courseStore: courseStore.state,
-//       staffStore: staffStore.state,
-//       alumniStore: alumniStore.state,
-//       activityStore: activityStore.state,
-//       partnerStore: partnerStore.state,
-//       testimonialStore: testimonialStore.state
-//     }
-// })
+//Initialize tooltips and datatables everywhere 
+$(function() {
+  
+  $('[data-toggle="tooltip"]').tooltip()
+    
+})

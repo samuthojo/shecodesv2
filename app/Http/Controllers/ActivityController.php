@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
 {
@@ -14,7 +15,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('cms.activities');
+        return view('cms.activities', [
+          'activities' => Activity::with('program')->get(),
+        ]);
     }
 
     /**

@@ -14,7 +14,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('cms.courses');
+        return view('cms.courses', [
+          'courses' => Course::with('program')->get(),
+        ]);
     }
 
     public function courses()

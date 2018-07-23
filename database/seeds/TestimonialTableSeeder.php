@@ -19,7 +19,7 @@ class TestimonialTableSeeder extends Seeder
           for($i = 0; $i < 4; $i++)
           {
             Testimonial::create([
-              'name' => $faker->name . ($i % 2 == 0) ? ' Parent' : ' Student',
+              'name' => $faker->name . (($i % 2 == 0) ? ', Parent' : ', Student'),
               'description' => $faker->paragraph(4, false),
             ]);
           }

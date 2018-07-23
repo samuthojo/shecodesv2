@@ -13,8 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
   
     {{-- DataTable Css --}}
-    {{--<link rel="stylesheet" type="text/css"
-      href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">--}}
+    <link rel="stylesheet" type="text/css"
+      href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
       
     <link rel="stylesheet" href="/css/app.css">
     
@@ -22,12 +22,19 @@
 
     <script src="/js/app.js"></script>
     
-    {{-- DataTable --}}
-    {{--<script type="text/javascript" charset="utf8"
-      src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>--}}
-      
-    {{--<script src="{{asset('js/main.js')}}"></script>--}}
-
+    {{-- DataTable Js--}}
+    <script type="text/javascript" charset="utf8"
+      src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    
+    <script type="text/javascript">
+      $(function() {
+        $("#she-table").DataTable({
+          iDisplayLength: 10,
+          bLengthChange: false
+        })
+      })
+    </script>
+    
     @yield('more')
       
   </head>

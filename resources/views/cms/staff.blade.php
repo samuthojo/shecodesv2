@@ -11,14 +11,16 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Position</th>
           <th>Actions</th>
         </tr>
       </thead>
       
       <tbody>
-        @foreach($testimonials as $testimonial)
+        @foreach($staff as $st)
         <tr>
-          <td>{{ $testimonial->name }}</td>
+          <td>{{ $st->name }}</td>
+          <td>{{ $st->position }}</td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-dark" 

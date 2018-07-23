@@ -14,7 +14,9 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        return view('cms.partners');
+        return view('cms.partners', [
+          'partners' => Partner::all(),
+        ]);
     }
 
     /**

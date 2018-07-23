@@ -14,7 +14,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-      return view('cms.staff');
+      return view('cms.staff', [
+        'staff' => Staff::all(),
+      ]);
     }
 
     public function staff()
