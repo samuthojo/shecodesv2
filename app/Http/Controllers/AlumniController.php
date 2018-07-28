@@ -47,8 +47,10 @@ class AlumniController extends Controller
       ]);
     }
     
-    public function edit(Alumni $alumni) {
+    public function edit($id) {
       
+      $alumni = Alumni::find($id);
+            
       $alumni = $this->attachPicture($alumni);
       
       return view('cms.forms.alumni-form', [

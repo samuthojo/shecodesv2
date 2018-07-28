@@ -77,30 +77,33 @@ Route::prefix('/api')->group(function() {
   Route::get('/courses', 'CourseController@courses');
   Route::post('/courses', 'CourseController@store');
   Route::patch('/courses/{course}', 'CourseController@update');
-  Route::delete('/courses', 'CourseController@destroy');
+  Route::delete('/courses/{course}', 'CourseController@destroy');
 
   Route::get('/staff', 'StaffController@staff');
   Route::post('/staff', 'StaffController@store');
   Route::patch('/staff/{staff}', 'StaffController@update');
-  Route::delete('/staff', 'StaffController@destroy');
+  Route::patch('/staff/{staff}/picture', 'StaffController@updatePicture');
+  Route::delete('/staff/{staff}', 'StaffController@destroy');
 
   Route::get('/alumni', 'AlumniController@alumni');
   Route::post('/alumni', 'AlumniController@store');
   Route::patch('/alumni/{alumni}', 'AlumniController@update');
-  Route::delete('/alumni', 'AlumniController@destroy');
+  Route::patch('/alumni/{alumni}/picture', 'AlumniController@updatePicture');
+  Route::delete('/alumni/{alumni}', 'AlumniController@destroy');
 
   Route::get('/partners', 'PartnerController@partners');
   Route::post('/partners', 'PartnerController@store');
   Route::patch('/partners/{partner}', 'PartnerController@update');
-  Route::delete('/partners', 'PartnerController@destroy');
+  Route::patch('/partners/{partner}/picture', 'PartnerController@updatePicture');
+  Route::delete('/partners/{partner}', 'PartnerController@destroy');
 
   Route::get('/testimonials', 'TestimonialController@testimonials');
   Route::post('/testimonials', 'TestimonialController@store');
   Route::patch('/testimonials/{testimonial}', 'TestimonialController@update');
-  Route::delete('/testimonials', 'TestimonialController@destroy');
+  Route::delete('/testimonials/{testimonial}', 'TestimonialController@destroy');
 
   Route::get('/activities', 'ActivityController@activities');
   Route::post('/activities', 'ActivityController@store');
   Route::patch('/activities/{activity}', 'ActivityController@update');
-  Route::delete('/activities', 'ActivityController@destroy');
+  Route::delete('/activities/{activity}', 'ActivityController@destroy');
 });

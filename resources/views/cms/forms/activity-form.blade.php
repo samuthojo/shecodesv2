@@ -5,8 +5,6 @@
   //Save the activity in the window
   @isset($activity)
   window.item = {!! json_encode($activity) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the parent models in the window
   window.parents = {!! json_encode($programs) !!}

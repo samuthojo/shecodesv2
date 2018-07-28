@@ -5,8 +5,6 @@
   //Save the staff in the window
   @isset($staff)
   window.item = {!! json_encode($staff) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the staff fields in the window
   window.fields = {

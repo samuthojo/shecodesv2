@@ -46,7 +46,7 @@ class CourseController extends Controller
         'breadcrumb_active' => 'Create New Course',
         'breadcrumb_past' => 'Courses',
         'breadcrumb_past_url' => route('courses.index'), 
-        'programs' => Program::all(),
+        'programs' => Program::pluck('name','id')->toArray(),
       ]);
     }
     

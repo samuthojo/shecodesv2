@@ -5,8 +5,6 @@
   //Save the alumni in the window
   @isset($alumni)
   window.item = {!! json_encode($alumni) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the alumni fields in the window
   window.fields = {

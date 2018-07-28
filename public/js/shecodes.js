@@ -69,10 +69,10 @@ new Vue({
   },
   created() {    
     //Retrieve item from the window
-    if(item) {
+    if(window.item !== undefined) {
       this.action = 'update'
       this.form = item
-    } else {
+    } else if(window.fields !== undefined){
       // Retrieve fields from the window
       this.action = 'create'
       this.copyFields(fields, this.form)

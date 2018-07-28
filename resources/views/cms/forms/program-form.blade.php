@@ -5,8 +5,6 @@
   //Save the program in the window
   @isset($program)
   window.item = {!! json_encode($program) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the program fields in the window
   window.fields = {

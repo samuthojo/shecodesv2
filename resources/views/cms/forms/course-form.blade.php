@@ -5,8 +5,6 @@
   //Save the course in the window
   @isset($course)
   window.item = {!! json_encode($course) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the parent models in the window
   window.parents = {!! json_encode($programs) !!}
@@ -55,9 +53,9 @@
               <div class="form-group">
                 <label for="name">Program Name:</label>
                 <select name="program_id" class="form-control"
-                  v-model="form.program_id" @change="">
+                  v-model="form.program_id">
                   <option 
-                    v-for="parent in parents" 
+                    v-for="parent in parents" :key="parent.id" 
                     value="parent.id">@{{parent.name}}</option>
                 </select>
               </div>

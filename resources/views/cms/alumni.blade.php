@@ -55,7 +55,7 @@
                     <a role="button" class="btn btn-pill btn-warning" 
                       title="view and edit details" 
                       data-toggle="tooltip" 
-                      href="{{ route('alumni.edit', ['alu' => $alu->id]) }}">
+                      href="{{ route('alumni.edit', ['alumni' => $alu->id]) }}">
                       <i class="fa fa-eye"></i>
                     </a>
                     <button type="button" class="btn btn-pill btn-danger" 

@@ -5,8 +5,6 @@
   //Save the partner in the window
   @isset($partner)
   window.item = {!! json_encode($partner) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the parent models in the window
   window.parents = {!! json_encode($programs) !!}

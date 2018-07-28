@@ -5,8 +5,6 @@
   //Save the testimonial in the window
   @isset($testimonial)
   window.item = {!! json_encode($testimonial) !!}
-  @else 
-  window.item = null
   @endisset
   //Save the testimonial fields in the window
   window.fields = {
