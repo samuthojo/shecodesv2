@@ -53,7 +53,7 @@
               <div class="form-group">
                 <label for="name">Program Name:</label>
                 <select name="program_id" class="form-control"
-                  v-model="form.program_id" @change="">
+                  v-model="form.program_id" required>
                   <option 
                     v-for="parent in parents" :key="parent.id"
                     :value="parent.id">@{{parent.name}}</option>

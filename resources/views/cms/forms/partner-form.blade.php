@@ -53,9 +53,9 @@
               <div class="form-group">
                 <label for="name">Program Name:</label>
                 <select name="program_id" class="form-control"
-                  v-model="form.program_id" @change="">
+                  v-model="form.program_id" required>
                   <option 
-                    v-for="parent in parents" :key="partner.id"
+                    v-for="parent in parents" :key="parent.id"
                     :value="parent.id">@{{parent.name}}</option>
                 </select>
               </div>
@@ -67,7 +67,7 @@
               <div class="form-group">
                 <label for="form_link">Partner Link:</label>
                 <input type="text" name="link" class="form-control"
-                  v-model="form.form_link">
+                  v-model="form.link">
               </div>
               
             </div>

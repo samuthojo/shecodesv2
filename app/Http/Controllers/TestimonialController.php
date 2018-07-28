@@ -83,7 +83,8 @@ class TestimonialController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:testimonials,name,'. $id,
+        'name' => 'required',
+        // 'name' => 'required|string|unique:testimonials,name,'. $id,
         'description' => 'required',
       ];
     }

@@ -11,7 +11,7 @@
     name:'', description: '', year_finished: '',
   }
   //Save the baseUrl in the window
-  window.baseUrl = '/api/alumni'
+  window.baseUrl = '/api/alumnis'
 </script>
 @endsection
 

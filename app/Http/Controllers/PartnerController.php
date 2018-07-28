@@ -85,11 +85,10 @@ class PartnerController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:partners,name,'. $id,
-        'description' => 'required',
-        'curriculum_description' => 'required',
-        'video_link' => 'required',
-        'form_link' => 'required',
+        'name' => 'required',
+        // 'name' => 'required|string|unique:partners,name,'. $id,
+        'program_id' => 'required',
+        'link' => 'nullable',
         'picture' => 'nullable|file|image|max:2048',
       ];
     }

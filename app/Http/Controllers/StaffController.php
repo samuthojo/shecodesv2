@@ -82,7 +82,8 @@ class StaffController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:staff,name,'. $id,
+        'name' => 'required',
+        // 'name' => 'required|string|unique:staff,name,'. $id,
         'position' => 'required',
         'description' => 'required',
         'is_director' => 'nullable|boolean',

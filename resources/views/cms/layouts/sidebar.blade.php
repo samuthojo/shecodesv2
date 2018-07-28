@@ -38,8 +38,8 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-link {{ areActiveRoutes(['alumni.index', 'alumni.create', 'alumni.edit']) }}" 
-         href="{{ route('alumni.index') }}">
+      <a class="nav-link {{ areActiveRoutes(['alumnis.index', 'alumnis.create', 'alumnis.edit']) }}" 
+         href="{{ route('alumnis.index') }}">
       <i class="nav-icon cui-people"></i>Alumni</a>
     </li>
     

@@ -55,7 +55,7 @@ Route::middleware('auth')->prefix('/admin')->group(function() {
   Route::resources([
     'programs' => 'ProgramController',
     'courses' => 'CourseController',
-    'alumni' => 'AlumniController',
+    'alumnis' => 'AlumniController',
     'staff' => 'StaffController',
     'partners' => 'PartnerController',
     'activities' => 'ActivityController',
@@ -85,11 +85,11 @@ Route::prefix('/api')->group(function() {
   Route::patch('/staff/{staff}/picture', 'StaffController@updatePicture');
   Route::delete('/staff/{staff}', 'StaffController@destroy');
 
-  Route::get('/alumni', 'AlumniController@alumni');
-  Route::post('/alumni', 'AlumniController@store');
-  Route::patch('/alumni/{alumni}', 'AlumniController@update');
-  Route::patch('/alumni/{alumni}/picture', 'AlumniController@updatePicture');
-  Route::delete('/alumni/{alumni}', 'AlumniController@destroy');
+  Route::get('/alumnis', 'AlumniController@alumni');
+  Route::post('/alumnis', 'AlumniController@store');
+  Route::patch('/alumnis/{alumni}', 'AlumniController@update');
+  Route::patch('/alumnis/{alumni}/picture', 'AlumniController@updatePicture');
+  Route::delete('/alumnis/{alumni}', 'AlumniController@destroy');
 
   Route::get('/partners', 'PartnerController@partners');
   Route::post('/partners', 'PartnerController@store');

@@ -7,7 +7,7 @@
   //Save dummy alu fields in the window
   window.fields = null
   //Save the baseUrl in the window
-  window.baseUrl = '/api/alumni'
+  window.baseUrl = '/api/alumnis'
 </script>
 @endsection
 
@@ -23,7 +23,7 @@
       
       <a role="button" 
         class="btn btn-pill btn-success mb-3 float-right"
-        href="{{ route('alumni.create') }}">
+        href="{{ route('alumnis.create') }}">
         <span class="btn-text">
           Create Alumni</span>
       </a>
@@ -55,7 +55,7 @@
                     <a role="button" class="btn btn-pill btn-warning" 
                       title="view and edit details" 
                       data-toggle="tooltip" 
-                      href="{{ route('alumni.edit', ['alumni' => $alu->id]) }}">
+                      href="{{ route('alumnis.edit', ['alumni' => $alu->id]) }}">
                       <i class="fa fa-eye"></i>
                     </a>
                     <button type="button" class="btn btn-pill btn-danger" 

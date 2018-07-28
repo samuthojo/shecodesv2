@@ -86,7 +86,8 @@ class CourseController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:courses,name,'. $id,
+        'name' => 'required',
+        // 'name' => 'required|string|unique:courses,name,'. $id,
         'description' => 'required',
         'video_id' => 'required',
         'program_id' => 'required',

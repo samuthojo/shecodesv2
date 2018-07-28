@@ -86,6 +86,7 @@ class ActivityController extends Controller
      */
     private function rules(string $id = null) {
       return [
+        'name' => 'required',
         // 'name' => 'required|string|unique:activities,name,'. $id,
         'date' => 'required',
         'location' => 'required',

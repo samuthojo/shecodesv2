@@ -43,7 +43,7 @@ class AlumniController extends Controller
       return view('cms.forms.alumni-form', [
         'breadcrumb_active' => 'Create New Alumni',
         'breadcrumb_past' => 'Alumni',
-        'breadcrumb_past_url' => route('alumni.index'), 
+        'breadcrumb_past_url' => route('alumnis.index'), 
       ]);
     }
     
@@ -56,7 +56,7 @@ class AlumniController extends Controller
       return view('cms.forms.alumni-form', [
         'breadcrumb_active' => 'Update Alumni',
         'breadcrumb_past' => 'Alumni',
-        'breadcrumb_past_url' => route('alumni.index'), 
+        'breadcrumb_past_url' => route('alumnis.index'), 
         'alumni' => $alumni,
       ]);
     }
@@ -74,7 +74,7 @@ class AlumniController extends Controller
   		if ($alumni && $request->hasFile('picture')) {
   			$this->updatePicture($request, $alumni);
   		}
-      return redirect()->route('alumni.create')
+      return redirect()->route('alumnis.create')
                        ->with('message', 'Alumni created successfully');
     }
 
@@ -85,7 +85,8 @@ class AlumniController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:alumni,name,'. $id,
+        'name' => 'required',
+        // 'name' => 'required|string|unique:alumnis,name,'. $id,
         'description' => 'required',
         'year_finished' => 'required',
         'picture' => 'nullable|file|image|max:2048',

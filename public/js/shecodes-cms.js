@@ -149,7 +149,6 @@ var vm = new Vue({
       this.isLoading = true
       let payload = this.getPayload()
       payload.append('_method', 'PATCH')
-      console.log(this.form.id);
       axios.post(baseUrl + "/" + this.form.id, payload, {
               headers: {'Content-Type': 'multipart/form-data'}})
            .then(({data}) => {

@@ -20,7 +20,7 @@
       
     <link rel="stylesheet" href="/css/app.css">
     
-    <link rel="stylesheet" href="/css/shecodes.css">
+    <link rel="stylesheet" href="/css/shecodes-cms.css">
     
     <link href="/css/datepicker.css" rel="stylesheet">
 
@@ -29,10 +29,8 @@
     {{-- DataTable Js--}}
     <script type="text/javascript" charset="utf8"
       src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-      
-    {{--<script src="/js/main.js"></script>--}}
-    
-    <script src="/js/shecodes.js" defer></script>
+          
+    <script src="/js/shecodes-cms.js" defer></script>
     
     <script src="/js/datepicker.js"></script>
         

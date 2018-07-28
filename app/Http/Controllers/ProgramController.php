@@ -82,7 +82,8 @@ class ProgramController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'name' => 'required|string|unique:programs,name,'. $id,
+        'name' => 'required',
+        // 'name' => 'required|string|unique:programs,name,'. $id,
         'description' => 'required',
         'curriculum_description' => 'required',
         'video_link' => 'required',
