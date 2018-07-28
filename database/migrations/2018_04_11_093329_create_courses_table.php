@@ -20,8 +20,10 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->string('video_id');
             $table->timestamps();
-            $table->softDeletes();
-            $table->foreign('program_id')->references('id')->on('programs');
+            // $table->softDeletes();
+            $table->foreign('program_id')
+                  ->references('id')->on('programs')
+                  ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

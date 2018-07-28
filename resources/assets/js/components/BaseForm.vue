@@ -1,48 +1,44 @@
 <template lang="html">
 
-  <div class="container-fluid position-relative">
+  <div class="card">
 
-    <base-notification
-      v-show="form.notification.showNotificationModal"
-      :is-loading="form.notification.showAsync"
-      :success-message="form.notification.successMessage"
-      :error-message="form.notification.errorMessage"
-      :show-success="form.notification.showSuccess"
-      :show-error="form.notification.showError"/>
-
-    <the-form-title-bar @close="onClose">
-
-      <template slot="header">
-
-        <h3> {{ formTitle }} </h3>
-
-      </template>
-
-    </the-form-title-bar>
-
-    <form @submit.prevent="onSubmit"
-          @keydown="form.errors.clear($event.target.name)">
-
-      <template v-for="field in schema.fields">
-
-        <component
-          :is="field.type"
-          :field="field"
-          :entity.sync="form[field.name]">
-        </component>
-
-      </template>
-
-      <div class="form-group">
-
-        <button
-          type="submit"
-          class="btn btn-primary float-right"
-          :disabled="form.errors.any()">Submit</button>
-
+    <div class="card-body">
+      
+      <div class="card-title">  
+        <div class="d-flex justify-content-between">
+          <h4>{{ title }}</h4>
+          <button type="button" class="btn btn-pill btn-outline-danger"
+            @click="$emit('close')">
+            cancel
+          </button>
+        </div>
       </div>
+      
+      <hr>
+      
+      <form @submit.prevent="onSubmit">
 
-    </form>
+        <template v-for="field in schema.fields">
+
+          <component
+            :is="field.type"
+            :field="field"
+            :entity.sync="program[field.name]">
+          </component>
+
+        </template>
+
+        <div class="form-group">
+
+          <button
+            type="submit"
+            class="btn btn-pill btn-success float-right">Submit</button>
+
+        </div>
+
+      </form>
+      
+    </div>
 
   </div>
 
@@ -56,29 +52,26 @@ export default {
       type: Object,
       required: true
     },
+    title: {
+      type: String,
+      required: true
+    },
+    program: {
+      type: Object
+    }
   },
 
   data() {
     return {
-      form: new Form({}),
-      formTitle: '',
-      isCreateAction: false
     }
   },
 
   methods: {
     onSubmit() {
-      if(this.isCreateAction) {
-        this.$emit('create', this.form)
-      }
-      else {
-        this.$emit('update', this.form)
-      }
+    
     },
     onClose() {
-      programStore.setShouldDisplay(false)
-
-      programStore.setShowCreateAction(true)
+    
     }
   }
 

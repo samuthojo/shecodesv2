@@ -21,7 +21,7 @@ class CreateProgramsTable extends Migration
             $table->string('video_link')->nullable();
             $table->string('form_link');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

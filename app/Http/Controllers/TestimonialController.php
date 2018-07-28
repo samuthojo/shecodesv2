@@ -13,15 +13,50 @@ class TestimonialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      return view('cms.testimonials', [
-        'testimonials' => Testimonial::all(),
-      ]);
+    {   
+        
+        return view('cms.testimonials', [
+          'testimonials' => $this->testimonials(),
+        ]);
     }
 
+    /**
+     * Return the testimonials as json.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection  $testimonials
+     */
     public function testimonials()
     {
-        return Testimonial::where('archived', false)->get();
+      return Testimonial::all()
+                    ->map(function ($testimonial) {
+                      return $testimonial;
+                      // return $this->attachPicture($testimonial);
+                    });
+    }
+    
+    /**
+     * Display the form to add resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+      return view('cms.forms.testimonial-form', [
+        'breadcrumb_active' => 'Create New Testimonial',
+        'breadcrumb_past' => 'Testimonials',
+        'breadcrumb_past_url' => route('testimonials.index'), 
+      ]);
+    }
+    
+    public function edit(Testimonial $testimonial) {
+      // $testimonial = $this->attachPicture($testimonial);
+      
+      return view('cms.forms.testimonial-form', [
+      'breadcrumb_active' => 'Update Testimonial',
+      'breadcrumb_past' => 'Testimonials',
+      'breadcrumb_past_url' => route('testimonials.index'), 
+      'testimonial' => $testimonial,
+      ]);
     }
 
     /**
@@ -33,7 +68,12 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, $this->rules(), $this->messages());
-      return Testimonial::create($request->all());
+      $testimonial = Testimonial::create($request->all());
+  		// if ($testimonial && $request->hasFile('picture')) {
+  		// 	$this->updatePicture($request, $testimonial);
+  		// }
+      return redirect()->route('testimonials.create')
+                       ->with('message', 'Testimonial created successfully');
     }
 
     /**
@@ -45,7 +85,6 @@ class TestimonialController extends Controller
       return [
         'name' => 'required|string|unique:testimonials,name,'. $id,
         'description' => 'required',
-        'video_id' => 'required',
       ];
     }
 
@@ -64,26 +103,43 @@ class TestimonialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Program  $testimonial
+     * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
       $this->validate($request, $this->rules($id), $this->messages());
-      return Testimonial::updateOrCreate(compact('id'), $request->all());
+      $testimonial = Testimonial::updateOrCreate(compact('id'), $request->all());
+      return $testimonial;
+      // return $this->attachPicture($testimonial);
     }
-
+    
+    // public function updatePicture(Request $request, Testimonial $testimonial)
+    // {
+    //   $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+    //   $testimonial->clearMediaCollection('program_pictures');
+    //   $extension = $request->file('picture')->getClientOriginalExtension();
+    //   $fileName = uniqid() . $extension;
+    //   $testimonial->addMediaFromRequest('picture')
+    //           ->usingFileName($fileName)->toMediaCollection('program_pictures');
+    //   return $this->attachPicture($testimonial)->picture;
+    // }
+    
     /**
-     * Archive the specified resource.
+     * Attach Picture to Testimonial.
      *
-     * @param  \App\Testimonial  $testimonial
-     * @return boolean
+     * @return \App\Testimonial  $testimonial
      */
-    public function archive(Testimonial $testimonial)
-    {
-      $testimonial->archived = true;
-      return $testimonial->save();
-    }
+    // private function attachPicture($testimonial) {
+    // 
+    //   if($testimonial->hasMedia('program_pictures')) {
+    //     $testimonial->picture = $testimonial->getFirstMediaUrl('program_pictures');
+    //   } else {
+    //     $testimonial->picture = asset('images/programsbanner.png');
+    //   }
+    //   
+    //   return $testimonial;
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -93,6 +149,9 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        return $testimonial->delete();
+      $id = $testimonial->id;
+      $testimonial->delete();
+      
+      return $id;
     }
 }

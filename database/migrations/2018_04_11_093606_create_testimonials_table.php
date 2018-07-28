@@ -18,7 +18,7 @@ class CreateTestimonialsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

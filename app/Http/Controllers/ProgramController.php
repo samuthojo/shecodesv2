@@ -16,30 +16,46 @@ class ProgramController extends Controller
     {   
         
         return view('cms.programs', [
-          'programs' => \DB::table('programs')->get(),
+          'programs' => $this->programs(),
         ]);
     }
 
     /**
      * Return the programs as json.
      *
-     * @return \App\Program  $programs
+     * @return \Illuminate\Database\Eloquent\Collection  $programs
      */
     public function programs()
     {
-      return Program::where('archived', false)
-                    ->with(['courses', 'activities'])
-                    ->get()->map(function ($program) {
-
-                        $program->picture_url = asset('images/programsbanner.png');
-
-                        if($program->hasMedia('program_pictures')) {
-                          $program->picture_url = $program->getFirstMediaUrl('program_pictures');
-                        }
-
-                        return $program;
-
+      return Program::all()
+                    ->map(function ($program) {
+                      return $this->attachPicture($program);
                     });
+    }
+    
+    /**
+     * Display the form to add resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+      return view('cms.forms.program-form', [
+        'breadcrumb_active' => 'Create New Program',
+        'breadcrumb_past' => 'Programs',
+        'breadcrumb_past_url' => route('programs.index'), 
+      ]);
+    }
+    
+    public function edit(Program $program) {
+      $program = $this->attachPicture($program);
+      
+      return view('cms.forms.program-form', [
+      'breadcrumb_active' => 'Update Program',
+      'breadcrumb_past' => 'Programs',
+      'breadcrumb_past_url' => route('programs.index'), 
+      'program' => $program,
+      ]);
     }
 
     /**
@@ -50,16 +66,13 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules(), $this->messages());
-        $program = Program::create($request->all());
-    		if ($program && $request->hasFile('picture')) {
-    			//clear existing
-    			$program->clearMediaCollection('program_pictures');
-    			//attach new
-    			$program->addMediaFromRequest('picture')
-    				      ->toMediaCollection('program_pictures');
-    		}
-        return $program;
+      $this->validate($request, $this->rules(), $this->messages());
+      $program = Program::create($request->all());
+  		if ($program && $request->hasFile('picture')) {
+  			$this->updatePicture($request, $program);
+  		}
+      return redirect()->route('programs.create')
+                       ->with('message', 'Program created successfully');
     }
 
     /**
@@ -99,19 +112,34 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, $this->rules($id), $this->messages());
-      return Program::updateOrCreate(compact('id'), $request->all());
+      $program = Program::updateOrCreate(compact('id'), $request->all());
+      return $this->attachPicture($program);
     }
-
-    /**
-     * Archive the specified resource.
-     *
-     * @param  \App\Program  $program
-     * @return boolean
-     */
-    public function archive(Program $program)
+    
+    public function updatePicture(Request $request, Program $program)
     {
-      $program->archived = true;
-      $program->save();
+      $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+      $program->clearMediaCollection('program_pictures');
+      $extension = $request->file('picture')->getClientOriginalExtension();
+      $fileName = uniqid() . $extension;
+      $program->addMediaFromRequest('picture')
+              ->usingFileName($fileName)->toMediaCollection('program_pictures');
+      return $this->attachPicture($program)->picture;
+    }
+    
+    /**
+     * Attach Picture to Program.
+     *
+     * @return \App\Program  $program
+     */
+    private function attachPicture($program) {
+  
+      if($program->hasMedia('program_pictures')) {
+        $program->picture = $program->getFirstMediaUrl('program_pictures');
+      } else {
+        $program->picture = asset('images/programsbanner.png');
+      }
+      
       return $program;
     }
 
@@ -123,6 +151,9 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program)
     {
-        return $program->delete();
+      $id = $program->id;
+      $program->delete();
+      
+      return $id;
     }
 }

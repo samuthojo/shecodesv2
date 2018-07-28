@@ -17,9 +17,10 @@ class CreateStaffTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('position');
+            $table->text('description');
             $table->boolean('is_director')->default(false);
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

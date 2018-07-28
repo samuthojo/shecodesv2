@@ -1,50 +1,82 @@
 @extends('cms.layouts.cms')
 
+@section('more')
+<script type="text/javascript">
+  //Save a dummy course in the window
+  window.item = null
+  //Save dummy course fields in the window
+  window.fields = null
+  //Save the baseUrl in the window
+  window.baseUrl = '/api/courses'
+</script>
+@endsection
+
 @section('content')
 
+@include('cms.modals.confirmation-modal')  
+  
 <div class="container" id="container">
   
-  <div class="table-responsive">
+  <div class="row">
     
-    <table class="table table-hover" id="she-table">
+    <div class="col-12">
       
-      <thead>
-        <tr>
-          <th>Course</th>
-          <th>Program</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+      <a role="button" 
+        class="btn btn-pill btn-success mb-3 float-right"
+        href="{{ route('courses.create') }}">
+        <span class="btn-text">
+          Create Course</span>
+      </a>
       
-      <tbody>
-        @foreach($courses as $course)
-        <tr>
-          <td>{{ $course->name }}</td>
-          <td>{{ $course->program->name }}</td>
-          <td>
-            <div class="btn-group">
-              <button type="button" class="btn btn-dark" 
-                data-toggle="tooltip" title="view details">
-                <i class="fa fa-eye"></i>
-              </button>
-              <button type="button" class="btn btn-warning" 
-                data-toggle="tooltip" title="edit details">
-                <i class="fa fa-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" 
-                data-toggle="tooltip" title="delete">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
+      <div class="table-responsive">
+        
+        <table class="table table-hover position-relative" id="she-table">
+          
+          @include('cms.loaders.loader')
+          
+          <thead>
+            <tr>
+              <th class="d-none"></th>
+              <th>Course</th>
+              <th>Program</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            
+            @foreach($courses as $course)
+              <tr @click="onConfirm({{$course->id}}, $event)">
+                <td class="d-none">{{ $course->id }}</td>
+                <td>{{ $course->name }}</td>
+                <td>{{ $course->program->name }}</td>
+                <td>
+                  <div class="btn-group">
+                    <a role="button" class="btn btn-pill btn-warning" 
+                      title="view and edit details" 
+                      data-toggle="tooltip" 
+                      href="{{ route('courses.edit', ['course' => $course->id]) }}">
+                      <i class="fa fa-eye"></i>
+                    </a>
+                    <button type="button" class="btn btn-pill btn-danger" 
+                      title="delete" data-toggle="tooltip" value="delete">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            @endforeach
+            
+          </tbody>
+          
+        </table>
+        
+      </div>
       
-    </table>
+    </div>
     
   </div>
   
 </div>
-
+  
 @endsection

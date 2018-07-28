@@ -14,12 +14,14 @@ class CreatePartnersTable extends Migration
     public function up()
     {
         Schema::create('partners', function (Blueprint $table) {
+          $table->increments('id');
           $table->integer('program_id')->unsigned();
           $table->string('name');
           $table->string('link')->nullable();
           $table->timestamps();
-          $table->softDeletes();
-          $table->foreign('program_id')->references('id')->on('programs');
+          // $table->softDeletes();
+          $table->foreign('program_id')->references('id')->on('programs')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -6,8 +6,8 @@ use App\ShecodesModel;
 
 class Staff extends ShecodesModel
 {
-    protected $fillable = [
-      'name', 'position', 'is_director',
-      'description',
-    ];
+  protected $fillable = [
+    'name', 'position', 'is_director',
+    'description',
+  ];
 }

@@ -3,7 +3,7 @@
   <ul class="nav">
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('home') }}" href="{{url('/')}}">
+      <a class="nav-link {{ isActiveRoute('home') }}" href="{{url('/admin')}}">
         <i class="nav-icon cui-speedometer"></i> Dashboard
       </a>
     </li>
@@ -11,20 +11,20 @@
     <li class="nav-title">Featured</li>
 
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('programs.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['programs.index', 'programs.create', 'programs.edit']) }}" 
         href="{{ route('programs.index') }}">
         <i class="nav-icon cui-layers"></i> Programs
       </a>
     </li>
         
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('courses.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['courses.index', 'courses.create', 'courses.edit']) }}" 
          href="{{ route('courses.index') }}">
       <i class="nav-icon cui-note"></i>Courses</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('activities.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['activities.index', 'activities.create', 'activities.edit']) }}" 
          href="{{ route('activities.index') }}">
       <i class="nav-icon cui-calendar"></i>Activities</a>
     </li>
@@ -32,19 +32,19 @@
     <li class="nav-title">Members</li>
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('staff.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['staff.index', 'staff.create', 'staff.edit']) }}" 
          href="{{ route('staff.index') }}">
       <i class="nav-icon cui-briefcase"></i>Staff</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('alumni.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['alumni.index', 'alumni.create', 'alumni.edit']) }}" 
          href="{{ route('alumni.index') }}">
       <i class="nav-icon cui-people"></i>Alumni</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('testimonials.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['testimonials.index', 'testimonials.create', 'testimonials.edit']) }}" 
         href="{{ route('testimonials.index') }}">
         <i class="nav-icon cui-comment-square"></i>Testimonials
       </a>
@@ -53,7 +53,7 @@
     <li class="nav-title">Partners</li>
     
     <li class="nav-item">
-      <a class="nav-link {{ isActiveRoute('partners.index') }}" 
+      <a class="nav-link {{ areActiveRoutes(['partners.index', 'partners.create', 'partners.edit']) }}" 
         href="{{ route('partners.index') }}">
         <i class="nav-icon fa fa-handshake-o"></i>Partners
       </a>
@@ -79,7 +79,7 @@
         
         <li class="nav-item ">
           <a class="nav-link" href="{{ route('change_password') }}">
-            <i class="cui-pencil"></i> Change password
+            <i class="cui-lock-unlocked"></i> Change password
           </a>
         </li>
         

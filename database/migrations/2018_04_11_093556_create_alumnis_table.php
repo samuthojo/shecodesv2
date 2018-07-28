@@ -19,7 +19,7 @@ class CreateAlumnisTable extends Migration
             $table->string('description');
             $table->string('year_finished');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

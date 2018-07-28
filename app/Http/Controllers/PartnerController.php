@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Partner;
+use App\Program;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -13,24 +14,51 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        
         return view('cms.partners', [
-          'partners' => Partner::all(),
+          'partners' => $this->partners(),
         ]);
     }
 
     /**
      * Return the partners as json.
      *
-     * @return \App\Partner  $partners
+     * @return \Illuminate\Database\Eloquent\Collection  $partners
      */
     public function partners()
     {
-      return Partner::where('archived', false)
-                    ->get()->map(function ($partner) {
-                      $partner->picture_url = $partner->getFirstMediaUrl('partner_pictures');
-                      return $partner;
+      return Partner::all()
+                    ->map(function ($partner) {
+                      return $this->attachPicture($partner);
                     });
+    }
+    
+    /**
+     * Display the form to add resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+      return view('cms.forms.partner-form', [
+        'breadcrumb_active' => 'Create New Partner',
+        'breadcrumb_past' => 'Partners',
+        'breadcrumb_past_url' => route('partners.index'), 
+        'programs' => Program::all(),
+      ]);
+    }
+    
+    public function edit(Partner $partner) {
+      $partner = $this->attachPicture($partner);
+      
+      return view('cms.forms.partner-form', [
+        'breadcrumb_active' => 'Update Partner',
+        'breadcrumb_past' => 'Partners',
+        'breadcrumb_past_url' => route('partners.index'), 
+        'partner' => $partner,
+        'programs' => Program::all(),
+      ]);
     }
 
     /**
@@ -41,16 +69,13 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules(), $this->messages());
-        $partner = Partner::create($request->all());
-    		if ($partner && $request->hasFile('picture')) {
-    			//clear existing
-    			$partner->clearMediaCollection('partner_pictures');
-    			//attach new
-    			$partner->addMediaFromRequest('picture')
-    				      ->toMediaCollection('partner_pictures');
-    		}
-        return $partner;
+      $this->validate($request, $this->rules(), $this->messages());
+      $partner = Partner::create($request->all());
+  		if ($partner && $request->hasFile('picture')) {
+  			$this->updatePicture($request, $partner);
+  		}
+      return redirect()->route('partners.create')
+                       ->with('message', 'Partner created successfully');
     }
 
     /**
@@ -60,7 +85,6 @@ class PartnerController extends Controller
      */
     private function rules(string $id = null) {
       return [
-        'program_id' => 'required|integer',
         'name' => 'required|string|unique:partners,name,'. $id,
         'description' => 'required',
         'curriculum_description' => 'required',
@@ -77,7 +101,6 @@ class PartnerController extends Controller
      */
     private function messages() {
       return [
-        'program_id.required' => 'Please select a program',
         'name.unique' => 'A partner with same name exists',
       ];
     }
@@ -92,19 +115,33 @@ class PartnerController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, $this->rules($id), $this->messages());
-      return Partner::updateOrCreate(compact('id'), $request->all());
+      $partner = Partner::updateOrCreate(compact('id'), $request->all());
+      return $this->attachPicture($partner);
     }
-
-    /**
-     * Archive the specified resource.
-     *
-     * @param  \App\Partner  $partner
-     * @return boolean
-     */
-    public function archive(Partner $partner)
+    
+    public function updatePicture(Request $request, Partner $partner)
     {
-      $partner->archived = true;
-      return $partner->save();
+      $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+      $partner->clearMediaCollection('partner_pictures');
+      $extension = $request->file('picture')->getClientOriginalExtension();
+      $fileName = uniqid() . $extension;
+      $partner->addMediaFromRequest('picture')
+              ->usingFileName($fileName)->toMediaCollection('partner_pictures');
+      return $this->attachPicture($partner)->picture;
+    }
+    
+    /**
+     * Attach Picture to Partner.
+     *
+     * @return \App\Partner  $partner
+     */
+    private function attachPicture($partner) {
+  
+      if($partner->hasMedia('partner_pictures')) {
+        $partner->picture = $partner->getFirstMediaUrl('partner_pictures');
+      } 
+      
+      return $partner;
     }
 
     /**
@@ -115,6 +152,9 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        return $partner->delete();
+      $id = $partner->id;
+      $partner->delete();
+      
+      return $id;
     }
 }

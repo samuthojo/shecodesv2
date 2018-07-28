@@ -13,19 +13,49 @@ class StaffController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      return view('cms.staff', [
-        'staff' => Staff::all(),
-      ]);
+    {   
+        
+        return view('cms.staff', [
+          'staff' => $this->staff(),
+        ]);
     }
 
+    /**
+     * Return the staff as json.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection  $staff
+     */
     public function staff()
     {
-        return Staff::where('archived', false)
-                    ->get()->map(function ($staff) {
-                      $staff->picture_url = $staff->getFirstMediaUrl('staff_pictures');
-                      return $staff;
+      return Staff::all()
+                    ->map(function ($staff) {
+                      return $this->attachPicture($staff);
                     });
+    }
+    
+    /**
+     * Display the form to add resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+      return view('cms.forms.staff-form', [
+        'breadcrumb_active' => 'Create New Staff',
+        'breadcrumb_past' => 'Staff',
+        'breadcrumb_past_url' => route('staff.index'), 
+      ]);
+    }
+    
+    public function edit(Staff $staff) {
+      $staff = $this->attachPicture($staff);
+      
+      return view('cms.forms.staff-form', [
+      'breadcrumb_active' => 'Update Staff',
+      'breadcrumb_past' => 'Staff',
+      'breadcrumb_past_url' => route('staff.index'), 
+      'staff' => $staff,
+      ]);
     }
 
     /**
@@ -37,15 +67,12 @@ class StaffController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, $this->rules(), $this->messages());
-      $staff =  Staff::create($request->all());
-      if ($staff && $request->hasFile('picture')) {
-        //clear existing
-        $staff->clearMediaCollection('staff_pictures');
-        //attach new
-        $staff->addMediaFromRequest('picture')
-              ->toMediaCollection('staff_pictures');
-      }
-      return $staff;
+      $staff = Staff::create($request->all());
+  		if ($staff && $request->hasFile('picture')) {
+  			$this->updatePicture($request, $staff);
+  		}
+      return redirect()->route('staff.create')
+                       ->with('message', 'Staff created successfully');
     }
 
     /**
@@ -57,8 +84,8 @@ class StaffController extends Controller
       return [
         'name' => 'required|string|unique:staff,name,'. $id,
         'position' => 'required',
-        'is_director' => 'required|boolean',
-        'description' => 'nullable|string',
+        'description' => 'required',
+        'is_director' => 'nullable|boolean',
         'picture' => 'nullable|file|image|max:2048',
       ];
     }
@@ -78,25 +105,39 @@ class StaffController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Program  $staff
+     * @param  \App\Staff  $staff
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
       $this->validate($request, $this->rules($id), $this->messages());
-      return Staff::updateOrCreate(compact('id'), $request->all());
+      $staff = Staff::updateOrCreate(compact('id'), $request->all());
+      return $this->attachPicture($staff);
     }
-
-    /**
-     * Archive the specified resource.
-     *
-     * @param  \App\Staff  $staff
-     * @return boolean
-     */
-    public function archive(Staff $staff)
+    
+    public function updatePicture(Request $request, Staff $staff)
     {
-      $staff->archived = true;
-      return $staff->save();
+      $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+      $staff->clearMediaCollection('staff_pictures');
+      $extension = $request->file('picture')->getClientOriginalExtension();
+      $fileName = uniqid() . $extension;
+      $staff->addMediaFromRequest('picture')
+              ->usingFileName($fileName)->toMediaCollection('staff_pictures');
+      return $this->attachPicture($staff)->picture;
+    }
+    
+    /**
+     * Attach Picture to Staff.
+     *
+     * @return \App\Staff  $staff
+     */
+    private function attachPicture($staff) {
+  
+      if($staff->hasMedia('staff_pictures')) {
+        $staff->picture = $staff->getFirstMediaUrl('staff_pictures');
+      } 
+      
+      return $staff;
     }
 
     /**
@@ -107,6 +148,9 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        return $staff->delete();
+      $id = $staff->id;
+      $staff->delete();
+      
+      return $id;
     }
 }

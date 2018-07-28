@@ -66,47 +66,41 @@ Route::middleware('auth')->prefix('/admin')->group(function() {
        ->name('change_password');
 });
 
-Route::prefix('/admin/api')->group(function() {
+Route::prefix('/api')->group(function() {
   
   Route::get('/programs', 'ProgramController@programs');
   Route::post('/programs', 'ProgramController@store');
   Route::patch('/programs/{program}', 'ProgramController@update');
-  Route::patch('/archive_programs/{program}', 'ProgramController@archive');
-  Route::delete('/programs', 'ProgramController@destroy');
+  Route::patch('/programs/{program}/picture', 'ProgramController@updatePicture');
+  Route::delete('/programs/{program}', 'ProgramController@destroy');
 
   Route::get('/courses', 'CourseController@courses');
   Route::post('/courses', 'CourseController@store');
   Route::patch('/courses/{course}', 'CourseController@update');
-  Route::patch('/archive_courses/{course}', 'CourseController@archive');
   Route::delete('/courses', 'CourseController@destroy');
 
   Route::get('/staff', 'StaffController@staff');
   Route::post('/staff', 'StaffController@store');
   Route::patch('/staff/{staff}', 'StaffController@update');
-  Route::patch('/archive_staff/{staff}', 'StaffController@archive');
   Route::delete('/staff', 'StaffController@destroy');
 
   Route::get('/alumni', 'AlumniController@alumni');
   Route::post('/alumni', 'AlumniController@store');
   Route::patch('/alumni/{alumni}', 'AlumniController@update');
-  Route::patch('/archive_alumni/{alumni}', 'AlumniController@archive');
   Route::delete('/alumni', 'AlumniController@destroy');
 
   Route::get('/partners', 'PartnerController@partners');
   Route::post('/partners', 'PartnerController@store');
   Route::patch('/partners/{partner}', 'PartnerController@update');
-  Route::patch('/archive_partners/{partner}', 'PartnerController@archive');
   Route::delete('/partners', 'PartnerController@destroy');
 
   Route::get('/testimonials', 'TestimonialController@testimonials');
   Route::post('/testimonials', 'TestimonialController@store');
   Route::patch('/testimonials/{testimonial}', 'TestimonialController@update');
-  Route::patch('/archive_testimonials/{testimonial}', 'TestimonialController@archive');
   Route::delete('/testimonials', 'TestimonialController@destroy');
 
   Route::get('/activities', 'ActivityController@activities');
   Route::post('/activities', 'ActivityController@store');
   Route::patch('/activities/{activity}', 'ActivityController@update');
-  Route::patch('/archive_testimonials/{activity}', 'ActivityController@archive');
   Route::delete('/activities', 'ActivityController@destroy');
 });

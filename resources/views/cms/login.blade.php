@@ -7,6 +7,8 @@
                                 initial-scale=1, shrink-to-fit=no">
   
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+  <link href="{{asset('images/fav.png')}}" rel="shortcut icon" type="image">
 
   <link rel="stylesheet" href="/css/app.css">
   

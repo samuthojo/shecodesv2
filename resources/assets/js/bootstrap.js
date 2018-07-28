@@ -18,15 +18,9 @@ window.Vue = require('vue');
 
 window.CoreUI = require('@coreui/coreui');
 
+window.store = require('./stores/store').default;
+
 window.globals = require('./utilities/GlobalFunctions.js').default;
-
-window.Form = require('./utilities/Form.js').default;
-
-window.Crud = require('./utilities/Crud.js').default;
-
-window.Program = require('./models/Program.js').default;
-
-require('bootstrap-datepicker');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

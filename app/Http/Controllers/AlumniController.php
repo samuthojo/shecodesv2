@@ -13,19 +13,50 @@ class AlumniController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        
         return view('cms.alumni', [
-          'alumni' => Alumni::all(),
+          'alumni' => $this->alumni(),
         ]);
     }
 
+    /**
+     * Return the alumni as json.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection  $alumni
+     */
     public function alumni()
     {
-        return Alumni::where('archived', false)
-                    ->get()->map(function ($alumni) {
-                        $alumni->picture_url = $alumni->getFirstMediaUrl('alumni_pictures');
-                        return $alumni;
+      return Alumni::all()
+                    ->map(function ($alumni) {
+                      return $this->attachPicture($alumni);
                     });
+    }
+    
+    /**
+     * Display the form to add resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+      return view('cms.forms.alumni-form', [
+        'breadcrumb_active' => 'Create New Alumni',
+        'breadcrumb_past' => 'Alumni',
+        'breadcrumb_past_url' => route('alumni.index'), 
+      ]);
+    }
+    
+    public function edit(Alumni $alumni) {
+      
+      $alumni = $this->attachPicture($alumni);
+      
+      return view('cms.forms.alumni-form', [
+        'breadcrumb_active' => 'Update Alumni',
+        'breadcrumb_past' => 'Alumni',
+        'breadcrumb_past_url' => route('alumni.index'), 
+        'alumni' => $alumni,
+      ]);
     }
 
     /**
@@ -36,16 +67,13 @@ class AlumniController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules(), $this->messages());
-        $alumni =  Alumni::create($request->all());
-        if ($alumni && $request->hasFile('picture')) {
-            //clear existing
-            $alumni->clearMediaCollection('alumni_pictures');
-            //attach new
-            $alumni->addMediaFromRequest('picture')
-              ->toMediaCollection('alumni_pictures');
-        }
-        return $alumni;
+      $this->validate($request, $this->rules(), $this->messages());
+      $alumni = Alumni::create($request->all());
+  		if ($alumni && $request->hasFile('picture')) {
+  			$this->updatePicture($request, $alumni);
+  		}
+      return redirect()->route('alumni.create')
+                       ->with('message', 'Alumni created successfully');
     }
 
     /**
@@ -53,13 +81,11 @@ class AlumniController extends Controller
      *
      * @return array
      */
-    private function rules(string $id = null)
-    {
-        return [
+    private function rules(string $id = null) {
+      return [
         'name' => 'required|string|unique:alumni,name,'. $id,
-        'position' => 'required',
-        'is_director' => 'required|boolean',
-        'description' => 'nullable|string',
+        'description' => 'required',
+        'year_finished' => 'required',
         'picture' => 'nullable|file|image|max:2048',
       ];
     }
@@ -69,9 +95,8 @@ class AlumniController extends Controller
      *
      * @return array
      */
-    private function messages()
-    {
-        return [
+    private function messages() {
+      return [
         'name.unique' => 'A alumni with same name exists',
       ];
     }
@@ -80,25 +105,39 @@ class AlumniController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Program  $alumni
+     * @param  \App\Alumni  $alumni
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, $this->rules($id), $this->messages());
-        return Alumni::updateOrCreate(compact('id'), $request->all());
+      $this->validate($request, $this->rules($id), $this->messages());
+      $alumni = Alumni::updateOrCreate(compact('id'), $request->all());
+      return $this->attachPicture($alumni);
     }
-
-    /**
-     * Archive the specified resource.
-     *
-     * @param  \App\Alumni  $alumni
-     * @return boolean
-     */
-    public function archive(Alumni $alumni)
+    
+    public function updatePicture(Request $request, Alumni $alumni)
     {
-        $alumni->archived = true;
-        return $alumni->save();
+      $this->validate($request, ['picture' => 'nullable|file|image|max:2048',]);
+      $alumni->clearMediaCollection('alumni_pictures');
+      $extension = $request->file('picture')->getClientOriginalExtension();
+      $fileName = uniqid() . $extension;
+      $alumni->addMediaFromRequest('picture')
+              ->usingFileName($fileName)->toMediaCollection('alumni_pictures');
+      return $this->attachPicture($alumni)->picture;
+    }
+    
+    /**
+     * Attach Picture to Alumni.
+     *
+     * @return \App\Alumni  $alumni
+     */
+    private function attachPicture($alumni) {
+  
+      if($alumni->hasMedia('alumni_pictures')) {
+        $alumni->picture = $alumni->getFirstMediaUrl('alumni_pictures');
+      } 
+      
+      return $alumni;
     }
 
     /**
@@ -109,6 +148,9 @@ class AlumniController extends Controller
      */
     public function destroy(Alumni $alumni)
     {
-        return $alumni->delete();
+      $id = $alumni->id;
+      $alumni->delete();
+      
+      return $id;
     }
 }

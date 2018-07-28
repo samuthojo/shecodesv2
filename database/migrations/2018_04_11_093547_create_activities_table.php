@@ -21,8 +21,9 @@ class CreateActivitiesTable extends Migration
             $table->string('location');
             $table->string('pictures_link')->nullable();
             $table->timestamps();
-            $table->softDeletes();
-            $table->foreign('program_id')->references('id')->on('programs');
+            // $table->softDeletes();
+            $table->foreign('program_id')->references('id')->on('programs')
+                  ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

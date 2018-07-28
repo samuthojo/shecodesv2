@@ -130,3 +130,17 @@ if (!function_exists('display_percentage')) {
  	}
   
  }
+ 
+/**
+ * Decide whether staff is director
+ */
+ if (!function_exists('staff_type')) {
+
+ 	function staff_type($bool) {
+ 		if(is_set($bool)) {
+      return ($bool) ? 'Director' : 'Staff';
+    }
+    return 'Staff';
+ 	}
+  
+ }

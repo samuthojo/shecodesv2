@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, 
                                   initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-  
+    
+    <link href="{{asset('images/fav.png')}}" rel="shortcut icon" type="image">
+
     {{-- DataTable Css --}}
     <link rel="stylesheet" type="text/css"
       href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
@@ -19,22 +21,21 @@
     <link rel="stylesheet" href="/css/app.css">
     
     <link rel="stylesheet" href="/css/shecodes.css">
+    
+    <link href="/css/datepicker.css" rel="stylesheet">
 
     <script src="/js/app.js"></script>
-    
+        
     {{-- DataTable Js--}}
     <script type="text/javascript" charset="utf8"
       src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+      
+    {{--<script src="/js/main.js"></script>--}}
     
-    <script type="text/javascript">
-      $(function() {
-        $("#she-table").DataTable({
-          iDisplayLength: 10,
-          bLengthChange: false
-        })
-      })
-    </script>
+    <script src="/js/shecodes.js" defer></script>
     
+    <script src="/js/datepicker.js"></script>
+        
     @yield('more')
       
   </head>
@@ -64,7 +65,8 @@
         <li class="nav-item px-3">
           
           <div class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle" 
+            <a href="#" 
+               class="nav-link {{ isActiveRoute('change_password') }} dropdown-toggle" 
                data-toggle="dropdown">
               <i class="nav-icon cui-user"></i> Admin
             </a>
@@ -93,14 +95,24 @@
         @include('cms.layouts.sidebar')
       </div>
       
-      <main class="main">
+      <main class="main" id="vue-container">
         
         <!-- Main content here -->
         
         @yield('breadcrumb')
         
         <div class="container mt-3 mb-3">
+          
+          @if(!isActiveRoute('change_password'))
+            <div class="row mb-1">
+              <div class="col-12">
+                @include('cms.alerts.alerts')
+              </div>
+            </div>
+          @endif
+          
           @yield('content')
+          
         </div>
         
       </main>

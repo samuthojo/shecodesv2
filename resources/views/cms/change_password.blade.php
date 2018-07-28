@@ -1,17 +1,20 @@
 @extends('cms.layouts.cms')
 
 @section('more')
-  <style>
-    #error-alert {
-      display: inline-block;
-    }
-  </style>
+<script type="text/javascript">
+  //Save a dummy item in the window
+  window.item = null
+  //Save dummy fields in the window
+  window.fields = null
+  //Save dummy baseUrl in the window
+  window.baseUrl = ''
+</script>
 @endsection
 
 @section('content')
 
 <div class="card">
-  <h4 class="card-header">Change Password: </h4>
+  <div class="card-header">Change Password: </div>
   <div class="card-body">
     
     @if(request()->session()->has('message'))
@@ -20,12 +23,12 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        {{ request()->session()->pull('message') }}
+        {{request()->session()->pull('message')}}
       </div>
     @endif
-
-    @if ($errors->any())
-      <div class="alert alert-danger" style="display: inline-block;">
+    
+    @if($errors->any())
+      <div id="alert-error" class="alert alert-danger">
           <ul>
               @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
@@ -33,7 +36,7 @@
           </ul>
       </div>
     @endif
-
+    
     <form name="reset_password_form" id="reset_password_form"
       method="post" action="{{route('password.request')}}">
       {{ csrf_field() }}
@@ -57,22 +60,14 @@
           class="form-control" placeholder="confirm password">
       </div>
 
-      <div class="form-group">
-        <button class="btn btn-success" type="submit">
+      <div class="form-group text-success">
+        <button class="btn btn-pill btn-success" type="submit">
           Submit
         </button>
-        @include('cms.inline_loader')
       </div>
 
     </form>
 
   </div>
 </div>
-<script>
-  $(function() {
-    $(":password").keydown(function() {
-      $(".alert-danger").fadeOut(0);
-    });
-  });
-</script>
 @endsection
