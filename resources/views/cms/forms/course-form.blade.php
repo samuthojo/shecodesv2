@@ -56,7 +56,7 @@
                   v-model="form.program_id">
                   <option 
                     v-for="parent in parents" :key="parent.id" 
-                    value="parent.id">@{{parent.name}}</option>
+                    :value="parent.id">@{{parent.name}}</option>
                 </select>
               </div>
               <div class="form-group">

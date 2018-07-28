@@ -152,7 +152,7 @@ new Vue({
     getPayload() {
       let formData = new FormData()
       for(let field in this.form) {
-        if(field == 'picture') continue
+        if(field == 'picture' || field == 'id') continue
         formData.append(field, this.form[field])
       }
       return formData
