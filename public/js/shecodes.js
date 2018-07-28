@@ -54,7 +54,7 @@ function showHideAlert(id) {
  * Such magic includes, automatically updating datatable
  * when delete, edit and create opeations are performed
  */
-new Vue({
+var vm = new Vue({
   el:'#vue-container',
   data: {
     form: {},
@@ -80,6 +80,20 @@ new Vue({
     if (window.parents !== undefined) {
       this.parents = parents
     }
+  },
+  mounted() {
+    //Set up data-binding on date-pickers
+    $(".date-picker").on("hide.datepicker", () => {
+      var _this = this
+      setTimeout(function() {
+        let date = $(".date-picker").val()
+        if(_this.form.date !== undefined) {
+          _this.form.date = date
+        } else {
+          _this.form.year_finished = date
+        }
+      }, 10)
+    })
   },
   computed: {
     showPlaceHolder() {
@@ -135,6 +149,7 @@ new Vue({
       this.isLoading = true
       let payload = this.getPayload()
       payload.append('_method', 'PATCH')
+      console.log(this.form.id);
       axios.post(baseUrl + "/" + this.form.id, payload, {
               headers: {'Content-Type': 'multipart/form-data'}})
            .then(({data}) => {

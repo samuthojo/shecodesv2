@@ -60,8 +60,9 @@
               </div>
               <div class="form-group">
                 <label for="form_link">Year Finished:</label>
-                <input type="text" name="year_finished" class="form-control"
-                  v-model="form.year_finished" id="year-picker" required>
+                <input type="text" name="year_finished" 
+                  class="form-control date-picker"
+                  :value="form.year_finished" id="year-picker" required>
               </div>
               
             </div>

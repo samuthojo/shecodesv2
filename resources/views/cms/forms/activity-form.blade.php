@@ -66,8 +66,8 @@
               </div>
               <div class="form-group">
                 <label for="form_link">Date:</label>
-                <input type="text" name="date" class="form-control"
-                  v-model="form.date" data-toggle="datepicker" required>
+                <input type="text" name="date" class="form-control date-picker"
+                  :value="form.date" data-toggle="datepicker" required>
               </div>
               <div class="form-group">
                 <label for="form_link">Location:</label>
