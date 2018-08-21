@@ -67,6 +67,9 @@ class StaffController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, $this->rules(), $this->messages());
+      if($request->is_director === null) {
+        $request->merge(['is_director' => false,]);
+      }
       $staff = Staff::create($request->all());
   		if ($staff && $request->hasFile('picture')) {
   			$this->updatePicture($request, $staff);
@@ -112,6 +115,9 @@ class StaffController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, $this->rules($id), $this->messages());
+      if($request->is_director === null) {
+        $request->merge(['is_director' => false,]);
+      }
       $staff = Staff::updateOrCreate(compact('id'), $request->all());
       return $this->attachPicture($staff);
     }
