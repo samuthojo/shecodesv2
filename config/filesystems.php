@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'public'),
+    'default' => env('FILESYSTEM_DRIVER', 'cpanel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('/'),
         ],
 
         'public' => [
@@ -53,6 +53,13 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+        
+        'cpanel' => [
+          'driver' => 'local',
+          'root' => public_path('uploads/images'),
+          'url' => env('APP_URL').'/uploads/images',
+          'visibility' => 'public',
         ],
 
         's3' => [
